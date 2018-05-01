@@ -3,7 +3,23 @@ cmake_minimum_required(VERSION 3.6.0)
 
 set(CMAKE_CXX_STANDARD 14)
 
+# Locate GTest
+find_package(Boost REQUIRED)
 
-add_executable(tests tests.cpp 
-../autoMarkup/DataHub/DataHub.hpp ../autoMarkup/DataHub/DataHub.cpp
-../autoMarkup/dataStructs.hpp ../autoMarkup/dataStructs.cpp)
+
+set(SOURCE_FILES
+        tests.cpp
+        ../autoMarkup/dataStructs.hpp
+        ../autoMarkup/dataStructs.cpp
+        ../autoMarkup/DataHub/DataHub.hpp
+        ../autoMarkup/DataHub/DataHub.cpp
+        ../autoMarkup/DictHandler/DictHandler.hpp
+        ../autoMarkup/DictHandler/DictHandler.cpp
+        test_DataHub/test_DataHub.hpp
+        test_DictHandler/test_DictHandler.hpp
+        
+        tests.cpp
+        )
+
+
+add_executable(tests ${SOURCE_FILES})

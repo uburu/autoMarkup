@@ -5,7 +5,7 @@
 int main(int argc, const char * argv[]) {
    
     std::ifstream file;
-    file.open("/Users/nikita/bmstu/technopark/sem_1/cpp_project/autoMarkup/autoMarkup/data/sents.txt");
+    file.open("data/sents.txt");
     
     DataHub dh;
     dh.ReadText(file);

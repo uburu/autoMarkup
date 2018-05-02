@@ -2,18 +2,12 @@ cmake_minimum_required(VERSION 3.6.0)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(automarkup
-        autoMarkup/main.cpp
-        autoMarkup/dataStructs.hpp
-        autoMarkup/dataStructs.cpp
-        autoMarkup/DataHub/DataHub.hpp
-        autoMarkup/DataHub/DataHub.cpp
-        autoMarkup/Tokenizer/Tokenizer.hpp
-        autoMarkup/Tokenizer/Tokenizer.cpp
-        autoMarkup/DictHandler/DictHandler.hpp
-        autoMarkup/DictHandler/DictHandler.cpp
-        autoMarkup/Markup/Markup.hpp
-        autoMarkup/Markup/Markup.cpp)
+include_directories(autoMarkup tests)
 
-add_executable(tests
-        tests/main.cpp)
+add_executable(automarkup main.cpp)
+add_subdirectory(autoMarkup)
+target_link_libraries(automarkup automarkuplib)
+
+add_executable(automarkuptests tests.cpp)
+add_subdirectory(tests)
+target_link_libraries(automarkuptests tests)

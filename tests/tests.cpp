@@ -14,5 +14,9 @@ int test_main( int, char *[ ] ) // note the name!
     test_DataHub_ReadDict_3();
     test_DictHandler_fillDict_1();
     test_DictHandler_fillDict_2();
+    test_DictHandler_fillDict_3();
+    test_DictHandler_fillDict_4();
+    test_DictHandler_fillDict_5();
+    test_DictHandler_fillDict_6();
     return 0;
 }

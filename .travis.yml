@@ -24,4 +24,3 @@ script:
   - CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7 cmake .
   
   - cmake --build . --target automarkup
-  - cmake --build . --target automarkuptests

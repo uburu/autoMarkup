@@ -1,8 +1,8 @@
 #include <iostream>
-#include <assert.h>
-#include "../autoMarkup/DataHub/DataHub.hpp"
+#include <cassert>
+#include "DataHub/DataHub.hpp"
 
-#define PATH "../data/" // path to data
+#define PATH "./data/" // path to data
 
 void test_DataHub_ReadText_1()
 {

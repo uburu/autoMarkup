@@ -10,6 +10,8 @@ find_package(Boost REQUIRED)
 set(SOURCE_FILES
         autoMarkup/dataStructs.hpp
         autoMarkup/dataStructs.cpp
+        autoMarkup/DataHub/DataHubErrors.hpp
+        autoMarkup/DictHandler/DictHandlerErrors.hpp
         autoMarkup/DataHub/DataHub.hpp
         autoMarkup/DataHub/DataHub.cpp
         autoMarkup/DictHandler/DictHandler.hpp

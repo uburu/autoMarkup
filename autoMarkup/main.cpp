@@ -1,11 +1,11 @@
 #include <iostream>
-#include "autoMarkup/DataHub/DataHub.hpp"
+#include "DataHub/DataHub.hpp"
 
 
 int main(int argc, const char * argv[]) {
    
     std::ifstream file;
-    file.open("data/sents.txt");
+    file.open("../data/sents.txt");
     
     DataHub dh;
     dh.ReadText(file);

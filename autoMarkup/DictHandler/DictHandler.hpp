@@ -61,14 +61,16 @@ public:
     
     void fillDict(); //const std::vector<dictelem_t> dict
     void fillDict(std::ifstream& file, std::string delimiter, std::string delimiter_vec); 
+	void fillModel(class DataHub datahub); 
+    
     unsigned long getId(const std::string key);
     std::vector<double> getVector(const size_t req_id);
     
-    void Word2Id(); /// Поиск id слов и их замена
-    void Id2Vector(); /// Поиск веторного представления слов по id
+    void Word2Id(class DataHub& datahub); /// Поиск id слов и их замена
+    void Id2Vector(class DataHub& datahub); /// Поиск веторного представления слов по id
     
-    void fit(); /// 
-    void fit(std::ifstream& file, std::string delimiter, std::string delimiter_vec);
+    void fitModel(class DataHub& datahub);  
+    // void fit(std::ifstream& file, std::string delimiter, std::string delimiter_vec);
     
     
     bool dropNF;

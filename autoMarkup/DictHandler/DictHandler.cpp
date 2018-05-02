@@ -1,4 +1,5 @@
 #include "DictHandler.hpp"
+#include "../DataHub/DataHubErrors.hpp"
 
 
 void DictHandler::fillDict()
@@ -18,6 +19,17 @@ void DictHandler::fillDict(std::ifstream& file, std::string delimiter, std::stri
     {
         model.set(dict[i].word, dict[i]);
         model_vec.set(dict[i].id, dict[i]);
+    }
+};
+
+
+void DictHandler::fillModel(class DataHub datahub)
+{
+    std::vector<dictelem_t> tmp_dict = datahub.getDict();
+    for (size_t i = 0; i < tmp_dict.size(); i++)
+    {
+        model.set(tmp_dict[i].word, tmp_dict[i]);
+        model_vec.set(tmp_dict[i].id, tmp_dict[i]);
     }
 };
 
@@ -48,48 +60,46 @@ std::vector<double> DictHandler::getVector(const size_t req_id)
 };
 
 
-void DictHandler::Word2Id()
+void DictHandler::Word2Id(class DataHub& datahub)
 {
-    word2id_t tmp;
-    for (size_t i = 0; i < tokens.size(); i++) // итерация по предложениям
+    auto tokens_tmp = datahub.getTokens();
+    auto sents_id_tmp = datahub.getSents_id();
+
+    for (size_t i = 0; i < tokens_tmp.size(); i++) // итерация по предложениям
     {
+        word2id_t tmp;
         tmp.sent_id = i;
-        for (size_t w = 0; w < tokens[i].size(); w++) // итерация по словам предложений
+        for (size_t w = 0; w < tokens_tmp[i].size(); w++) // итерация по словам предложений
         {
-            size_t key = getId(tokens[i][w]);
+            size_t key = getId(tokens_tmp[i][w]);
             tmp.word_id.push_back(key);
         }
-        sents_id.push_back(tmp);
+        datahub.addSents_id(tmp);
     }
 }
 
 
-void DictHandler::Id2Vector()
+void DictHandler::Id2Vector(class DataHub& datahub)
 {
-    id2vector_t tmp;
-    for (size_t i = 0; i < sents_id.size(); i++) // итерация по предложениям
+    
+    auto sents_id_tmp = datahub.getSents_id();
+    for (size_t i = 0; i < sents_id_tmp.size(); i++) // итерация по предложениям
     {
+        id2vector_t tmp;
         tmp.sent_id = i;
-        for (size_t w = 0; w < sents_id[i].word_id.size(); w++) // итерация по словам предложений
+        for (size_t w = 0; w < sents_id_tmp[i].word_id.size(); w++) // итерация по словам предложений
         {
-            std::vector<double> vec = getVector(sents_id[i].word_id[w]);
+            std::vector<double> vec = getVector(sents_id_tmp[i].word_id[w]);
             tmp.word_embeddings.push_back(vec);
         }
-        sents_embeddings.push_back(tmp);
+        datahub.addSents_embeddings(tmp);
     }
 }
 
 
-void DictHandler::fit()
+void DictHandler::fitModel(class DataHub& datahub)
 {
-    Word2Id();
-    Id2Vector();
-};
-
-
-void DictHandler::fit(std::ifstream& file, std::string delimiter, std::string delimiter_vec)
-{
-    ReadDict(file, delimiter, delimiter_vec);
-    Word2Id();
-    Id2Vector();
+    fillModel(datahub);
+    Word2Id(datahub);
+    Id2Vector(datahub);
 };

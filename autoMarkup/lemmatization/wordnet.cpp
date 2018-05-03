@@ -66,7 +66,11 @@ void WordNet::insert(const std::string& word, const std::string& lemWord){
 		}
 		std::cout << "LETTER: " << curNode->letter << "\n";
 		if (curNode->lemma != nullptr)
+		{
 			std::cout << "LEMMA: " << *curNode->lemma << "\n";
+			std::cout << "ADDR LEMMA: " << curNode->lemma << "\n";
+		}
+
 
 	}
 }

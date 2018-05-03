@@ -6,7 +6,7 @@ Traincontroller::Traincontroller()
 {}
 
 bool Traincontroller::run(){
-	if (!readFile("test_dict.txt"))
+	if (!readFile("Lemmadict.txt"))
 		return false;
 
 	TrainDataParser* parser = new TrainDataParser;

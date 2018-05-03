@@ -10,5 +10,8 @@ add_library(automarkuplib STATIC
         Tokenizer/Tokenizer.cpp
         DictHandler/DictHandler.hpp
         DictHandler/DictHandler.cpp
+        Markup/Types.hpp
         Markup/Markup.hpp
-        Markup/Markup.cpp)
+        Markup/Markup.cpp
+        Markup/CosCounter.hpp
+        Markup/CosCounter.cpp)

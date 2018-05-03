@@ -6,19 +6,14 @@
 int main(int argc, const char * argv[]) {
    
     std::ifstream file;
-<<<<<<< HEAD:example.cpp
-    file.open("./data/sents.txt");
-=======
     file.open("../data/sents.txt");
->>>>>>> show:main.cpp
-    
+
     DataHub dh;
     dh.ReadText(file);
     
     file.close();
 
     std::cout << dh.getText() << std::endl;
-
 
     file.open("./data/dict.txt");
     dh.ReadDict(file, " ", ",");
@@ -53,6 +48,6 @@ int main(int argc, const char * argv[]) {
     std::cout << "\nword '" << dh.getDict()[2].word << "' has id [2] or 3 in dict.txt " << std::endl;
     std::cout << "1-st word: '" << dh.getTokens()[1][0] << "' from 2-nd sentence has id: " 
     << dh.getSents_id()[1].word_id[0] << std::endl;
-    
+
     return 0;
 }

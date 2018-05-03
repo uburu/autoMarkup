@@ -6,6 +6,7 @@ branches:
   only:
     - master
     - develop
+    - show
 
 os: linux
 dist: trusty

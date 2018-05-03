@@ -31,8 +31,24 @@ public:
     void ReadIndexes();
     void WriteMarkups();
 
-    std::string getText();
-    std::vector<dictelem_t> getDict();
+
+    std::string getText() {return text;};
+    std::vector<token_t> getTokens() {return tokens;}; 
+    std::vector<dictelem_t> getDict() {return dict;};
+    std::vector<word2id_t> getSents_id() {return sents_id;}; 
+    std::vector<id2vector_t> getSents_embeddings(){return sents_embeddings;};
+
+    void setText(std::string input) {text = input;};
+    void setTokens(std::vector<token_t> input) {tokens = input;}; 
+    void setDict(std::vector<dictelem_t> input) {dict = input;};
+    void setSents_id(std::vector<word2id_t> input) {sents_id = input;}; 
+    void setSents_embeddings(std::vector<id2vector_t> input){sents_embeddings = input;};
+
+    void addText(std::string input) {text = text + input;};
+    void addTokens(token_t input) {tokens.push_back(input);}; 
+    void addDict(dictelem_t input) {dict.push_back(input);};
+    void addSents_id(word2id_t input) {sents_id.push_back(input);}; 
+    void addSents_embeddings(id2vector_t input){sents_embeddings.push_back(input);};
 };
 
 #endif /* DataHub_hpp */

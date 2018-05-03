@@ -2,16 +2,12 @@ cmake_minimum_required(VERSION 3.6.0)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_library(automarkuplib STATIC
-        dataStructs.hpp
-        DataHub/DataHub.hpp
-        DataHub/DataHub.cpp
-        Tokenizer/Tokenizer.hpp
-        Tokenizer/Tokenizer.cpp
-        DictHandler/DictHandler.hpp
-        DictHandler/DictHandler.cpp
-        Markup/Types.hpp
-        Markup/Markup.hpp
-        Markup/Markup.cpp
-        Markup/CosCounter.hpp
-        Markup/CosCounter.cpp)
+include_directories(autoMarkup tests)
+
+add_executable(automarkup main.cpp)
+add_subdirectory(autoMarkup)
+target_link_libraries(automarkup automarkuplib)
+
+add_executable(automarkuptests tests.cpp)
+add_subdirectory(tests)
+target_link_libraries(automarkuptests tests)

@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.6.0)
-# project(autoMarkup)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
+<<<<<<< HEAD
 # Locate GTest
 find_package(Boost REQUIRED)
 
@@ -26,3 +26,14 @@ set(SOURCE_FILES
 
 
 add_executable(tests ${SOURCE_FILES})
+=======
+add_library(tests STATIC
+        DataHub/DataHubTests.hpp
+        DataHub/DataHubTests.cpp
+        Tokenizer/TokenizerTests.hpp
+        Tokenizer/TokenizerTests.cpp
+        DictHandler/DictHandlerTests.hpp
+        DictHandler/DictHandlerTests.hpp
+        Markup/MakupTests.hpp
+        Markup/MakupTests.cpp)
+>>>>>>> show

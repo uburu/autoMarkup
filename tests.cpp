@@ -1,10 +1,17 @@
 #include <iostream>
+<<<<<<< HEAD:tests/tests.cpp
 #include <assert.h>
 #include <boost/test/minimal.hpp>
 #include "test_DataHub/test_DataHub.hpp"
 #include "test_DictHandler/test_DictHandler.hpp"
 
 #define PATH "../data/tests/" // path to data
+=======
+#include <cassert>
+#include "DataHub/DataHub.hpp"
+
+#define PATH "./data/" // path to data
+>>>>>>> show:tests.cpp
 
 int test_main( int, char *[ ] ) // note the name! 
 {

@@ -16,5 +16,5 @@ double CosCounter::ApplyTo(const std::vector<double> &first,
         sqrSecond += second[i] * second[i];
     }
 
-    return comp / (sqrt(sqrFirst) + sqrt(sqrSecond));
+    return comp / (sqrt(sqrFirst) * sqrt(sqrSecond));
 }

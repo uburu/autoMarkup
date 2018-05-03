@@ -13,9 +13,5 @@ int main(int argc, const char * argv[]) {
 
     std::cout << dh.getText() << std::endl;
 
-
-    
-    
-    
     return 0;
 }

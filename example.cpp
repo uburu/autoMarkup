@@ -6,11 +6,7 @@
 int main(int argc, const char * argv[]) {
    
     std::ifstream file;
-<<<<<<< HEAD:example.cpp
     file.open("./data/sents.txt");
-=======
-    file.open("../data/sents.txt");
->>>>>>> show:main.cpp
     
     DataHub dh;
     dh.ReadText(file);

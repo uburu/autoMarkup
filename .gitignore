@@ -34,7 +34,10 @@
 # IDE
 .idea
 
-#CMake
+# CMake
 /CMakeFiles/
 cmake-build-debug
 cmake-build-release
+
+# Binary
+*.bin

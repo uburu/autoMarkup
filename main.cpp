@@ -48,6 +48,8 @@ int main(int argc, const char * argv[]) {
     std::cout << "\nword '" << dh.getDict()[2].word << "' has id [2] or 3 in dict.txt " << std::endl;
     std::cout << "1-st word: '" << dh.getTokens()[1][0] << "' from 2-nd sentence has id: " 
     << dh.getSents_id()[1].word_id[0] << std::endl;
+    
+    
 
     return 0;
 }

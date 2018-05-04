@@ -35,7 +35,7 @@
 .idea
 
 # CMake
-/CMakeFiles/
+CMakeFiles
 cmake-build-debug
 cmake-build-release
 

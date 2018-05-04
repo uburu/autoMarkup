@@ -20,5 +20,5 @@ set(PROJECT_FILES
 
 set(TEST_FILES)
 
-add_executable(automarkup main.cpp ${PROJECT_FILES})
-add_executable(automarkuptests tests.cpp ${PROJECT_FILES})
+add_executable(example.cpp ${PROJECT_FILES})
+add_executable(tests.cpp ${PROJECT_FILES})

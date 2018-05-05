@@ -15,9 +15,10 @@ protected:
     /*
     text, senteces, tokens формируются в ходе работы класса Tokenizer
     */
-	std::string text; /// текст для токенизации
+    std::string text; /// текст для токенизации
     std::vector<std::string> sentences; /// массив предложений из текста
-	std::vector<token_t> tokens; /// массив слов (токенов)
+    std::vector<token_t> tokens; /// массив слов (токенов)
+    std::vector<std::vector<std::string>> lemma_tokens; // лемманизированный массив слов
     std::vector<dictelem_t> dict; /// словарь w2v
     std::vector<word2id_t> sents_id; /// id слов в предложениях
     std::vector<id2vector_t> sents_embeddings; /// векторные представления слов в предложениях

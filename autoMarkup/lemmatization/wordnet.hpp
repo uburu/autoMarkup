@@ -14,6 +14,7 @@ public:
 	// ~WordNet();
 
 	void insert(const std::string& word, const std::string& lemma);
+	std::string* find_lemma_of_word(const std::string& word);
 
 private:
 

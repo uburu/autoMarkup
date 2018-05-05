@@ -1,4 +1,6 @@
 #include "Tokenizer.hpp"
+#include "../lemmatization/traincontroller.hpp"
+#include "../lemmatization/traindataparser.hpp"
 #include <iostream>
 
 
@@ -7,7 +9,7 @@ void Tokenizer::sentence_token(){ // разделение на предложе�
 	boost::tokenizer<boost::char_separator<char>> tokens(text, sep);
 	for (boost::tokenizer<boost::char_separator<char>>::iterator it = tokens.begin(); it != tokens.end(); ++it){
 		sentences.push_back(*it);
-		// std::cout << *it<< "\n";
+		std::cout << *it<< "\n";
 	}
 }
 
@@ -40,6 +42,36 @@ void Tokenizer::sentence_to_words(){ // разделение предложен�
 }
 
 
+void Tokenizer::tokens_to_lemma(){
+	Traincontroller ac;
+	ac.run();
+	// TrainDataParser* parser = new TrainDataParser;
+	// wordnetObj = parser->wordNet();
+	std::string* lemma;
+	std::vector<std::string> lemma_sentences;
+	for (int i = 0; i < tokens.size(); i++){ // цикл по предложеням в массиве
+		for (int j = 0; j < tokens[i].size(); j++){ // цикл по словам в предложении
+			lemma = ac.wordnetObj->find_lemma_of_word(tokens[i][j]);
+			if (lemma != nullptr){
+				lemma_sentences.push_back(*lemma);
+			}
+			else{
+				lemma_sentences.push_back(tokens[i][j]);
+			}
+		}
+		lemma_tokens.push_back(lemma_sentences);
+		lemma_sentences.clear();
+	}
+	// std::cout << lemma_tokens.size() << "\n";
+	for (int i = 0; i < lemma_tokens.size(); i++){
+		// std::cout << lemma_tokens[i][j] << " ";
+		for(int j = 0; j < lemma_tokens[i].size(); j++){
+			std::cout << lemma_tokens[i][j] << " ";
+		}
+		std::cout << "\n";
+	}
+}
+
 /*
 Нормализация - очищение предложений от знаков
 */
@@ -54,3 +86,4 @@ std::vector<std::string> Tokenizer::normalize(std::vector<std::string>& array){
 	}
 	return array;	
 }
+

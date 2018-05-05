@@ -8,7 +8,7 @@ WordNet::WordNet()
 std::string* WordNet::findLemma(const std::string& lemWord){ 
 	for (int i = 0; i < lemmas.size(); i++){
 		if (*lemmas[i] == lemWord){
-			std::cout << "ADDRES OF LEMMA: " << *lemmas[i] << "\n";
+			// std::cout << "ADDRES OF LEMMA: " << *lemmas[i] << "\n";
 			return lemmas[i];
 		}
 	}
@@ -39,16 +39,15 @@ WordNet::TreeNode* WordNet::getLetterPtr(const char key, const std::vector<WordN
 
 
 void WordNet::insert(const std::string& word, const std::string& lemWord){
-	std::cout << "-----------------------\n";
-	std::cout << "INSERT WORD: " << word << "\n";
 	if (root == nullptr){
 		root = new TreeNode;
 	}
+	// std::cout << "LET: " << root->childLetters[0]->letter;
 	TreeNode* curNode = root;
 	for (int i = 0; i < word.size(); i++){
 		// std::string nodeName = word[i]; // word[i] - переменная типа char 
 		if (!findLetterPtr(word[i], curNode->childLetters)){ // если такой буквы еще нет на этом пути
-			std::cout << " word[i]: " << &word[i] << "\n";
+			// std::cout << " word[i]: " << &word[i] << "\n";
 			TreeNode* newNode = new TreeNode;
 			newNode->letter = word[i];
 			if (i == (word.size() - 1)){
@@ -64,13 +63,34 @@ void WordNet::insert(const std::string& word, const std::string& lemWord){
 		else{ // если такая буква уже есть на этом пути
 			curNode = getLetterPtr(word[i], curNode->childLetters);
 		}
-		std::cout << "LETTER: " << curNode->letter << "\n";
-		if (curNode->lemma != nullptr)
-		{
-			std::cout << "LEMMA: " << *curNode->lemma << "\n";
-			std::cout << "ADDR LEMMA: " << curNode->lemma << "\n";
+		// std::cout << "LETTER: " << curNode->letter << "\n";
+		// if (curNode->lemma != nullptr)
+		// {
+		// 	std::cout << "LEMMA: " << *curNode->lemma << "\n";
+		// 	std::cout << "ADDR LEMMA: " << curNode->lemma << "\n";
+		// }
+
+
+	}
+}
+
+
+std::string* WordNet::find_lemma_of_word(const std::string& word){ // поиск леммы по слову
+	if (root == nullptr){
+		return nullptr;
+	}
+	else{
+		TreeNode* curNode = root;
+		for (int i = 0; i < word.size(); i++){
+			if (findLetterPtr(word[i], curNode->childLetters)){
+				// std::cout << "6\n";
+				curNode = getLetterPtr(word[i], curNode->childLetters);
+				if (i == (word.size()-1) && curNode->lemma != nullptr){
+					return curNode->lemma;
+				}
+			}
+			else 
+				return nullptr;
 		}
-
-
 	}
 }

@@ -11,10 +11,11 @@ class Traincontroller
 public:
 	Traincontroller();
 	bool run();
+	std::shared_ptr<WordNet> getcontroller();
+	std::shared_ptr<WordNet> wordnetObj; // объект, хранящий в себе дерево 
 private:
 	bool readFile(const std::string& filapath);
 	Filemanager::Data fileData;
-	std::shared_ptr<WordNet> wordnetObj;
 };
 
 

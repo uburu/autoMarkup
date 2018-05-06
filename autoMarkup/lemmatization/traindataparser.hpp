@@ -11,10 +11,10 @@ class TrainDataParser
 public:
 	TrainDataParser();
 
-	bool parse(const Filemanager::Data& fileData);
-	std::shared_ptr<WordNet> wordNet();
+	bool parse(const Filemanager::Data& fileData); // заполнение дерева
+	std::shared_ptr<WordNet> wordNet(); // метод для получения объекта дерева 
 private:
-	std::shared_ptr<WordNet> wordnetObj;
+	std::shared_ptr<WordNet> wordnetObj; // объект - хранящий в себе дерево
 };
 
 #endif // TRAINDATAPARSER_H

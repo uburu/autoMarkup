@@ -43,10 +43,26 @@ void Tokenizer::sentence_to_words(){ // разделение предложен�
 
 
 void Tokenizer::tokens_to_lemma(){
+/*
+3 способа создать дерево
+*/
+
+	// 1 - запустить метод run внутри метода tokens_to_lemma (работает)
+
 	Traincontroller ac;
 	ac.run();
-	// TrainDataParser* parser = new TrainDataParser;
-	// wordnetObj = parser->wordNet();
+
+	// 2 - запустить метод run() в Tokenizer_test.cpp и взять дерево из класса Traincontroller (будет segmentation fault)
+	
+	// Traincontroller* obj = new Traincontroller; 
+	// wordnetObj = obj->getcontroller();
+
+	// 3 - запустить метод run() в Tokenizer_test.cpp и взять дерево из класса TraindataParser (дерево не заполнится но не будет segmentation fault)
+	// метод find_lemma_of_word всегда возвращает nullptr
+	
+	// TrainDataParser* obj = new TrainDataParser;
+	// wordnetObj = obj->wordNet();
+
 	std::string* lemma;
 	std::vector<std::string> lemma_sentences;
 	for (int i = 0; i < tokens.size(); i++){ // цикл по предложеням в массиве
@@ -62,16 +78,13 @@ void Tokenizer::tokens_to_lemma(){
 		lemma_tokens.push_back(lemma_sentences);
 		lemma_sentences.clear();
 	}
-	// std::cout << lemma_tokens.size() << "\n";
 	for (int i = 0; i < lemma_tokens.size(); i++){
-		// std::cout << lemma_tokens[i][j] << " ";
 		for(int j = 0; j < lemma_tokens[i].size(); j++){
 			std::cout << lemma_tokens[i][j] << " ";
 		}
 		std::cout << "\n";
 	}
 }
-
 /*
 Нормализация - очищение предложений от знаков
 */

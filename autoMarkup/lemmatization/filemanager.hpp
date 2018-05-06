@@ -13,14 +13,14 @@ public:
 	// typedef std::vector<Utf16Line> Utf16LineList;
 	// typedef std::shared_ptr<Utf16LineList> Data; // shared ptr to vector of UTF-16 lines
 
-	typedef std::shared_ptr<std::vector<std::string>> Data; // shared_ptr of vector of string lines
+	typedef std::shared_ptr<std::vector<std::string>> Data; 
 	Filemanager();
 	bool read(const std::string& filepath);
 	Data getdata();
 private:
 	bool readData();
 	std::ifstream file;
-	Data data;
+	Data data; // переменная хранящая в себе строки словаря на уровне класса Filemanager
 };
 
 #endif // FILEMANAGER_HPP

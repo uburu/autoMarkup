@@ -11,10 +11,8 @@ class WordNet
 {
 public:
 	WordNet();
-	// ~WordNet();
-
-	void insert(const std::string& word, const std::string& lemma);
-	std::string* find_lemma_of_word(const std::string& word);
+	void insert(const std::string& word, const std::string& lemma); // метод вставки в дерево
+	std::string* find_lemma_of_word(const std::string& word); // поиск нормальной формы слова в дереве
 
 private:
 
@@ -22,8 +20,8 @@ private:
 	struct TreeNode {
 		char letter = '0'; // имя узла - буква из слова
 		/*
-		lemma - указатель на нормальную словоформу, присваивается когда доходим до последней буквы в слове
-		то есть путь для построения слова записан в дерево и качестве терминального знака(как в конечных автоматах)
+		lemma - указатель на нормальную словоформу из lemmas. Присваивается когда доходим до последней буквы в слове
+		то есть путь для построения слова записан в дерево и в качестве терминального знака(как в конечных автоматах)
 		последняя буква слова указывает на нормальную словоформу
 		*/
 		std::string* lemma = nullptr;
@@ -37,8 +35,8 @@ private:
 	std::vector<std::string*> lemmas; // вектор указателей на нормальные словоформы
 	TreeNode* root = nullptr;
 	std::string* findLemma(const std::string& lemWord); // возвращает указатель на словоформу из lemmas, если таковой нет - создает ее
-	bool findLetterPtr(const char key, const std::vector<WordNet::TreeNode*>& ptrs); 
-	TreeNode* getLetterPtr(const char key, const std::vector<WordNet::TreeNode*>& ptrs);
+	bool findLetterPtr(const char key, const std::vector<WordNet::TreeNode*>& ptrs); // проверка наличия указателя на узел с именем key(буква из слова) в childLetters
+	TreeNode* getLetterPtr(const char key, const std::vector<WordNet::TreeNode*>& ptrs); // получение указателя на узел с именем key(буква из слова) в childLetters
 };
 
 #endif // WORDNET_HPP

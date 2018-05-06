@@ -8,7 +8,6 @@ WordNet::WordNet()
 std::string* WordNet::findLemma(const std::string& lemWord){ 
 	for (int i = 0; i < lemmas.size(); i++){
 		if (*lemmas[i] == lemWord){
-			// std::cout << "ADDRES OF LEMMA: " << *lemmas[i] << "\n";
 			return lemmas[i];
 		}
 	}
@@ -42,40 +41,27 @@ void WordNet::insert(const std::string& word, const std::string& lemWord){
 	if (root == nullptr){
 		root = new TreeNode;
 	}
-	// std::cout << "LET: " << root->childLetters[0]->letter;
 	TreeNode* curNode = root;
 	for (int i = 0; i < word.size(); i++){
-		// std::string nodeName = word[i]; // word[i] - переменная типа char 
 		if (!findLetterPtr(word[i], curNode->childLetters)){ // если такой буквы еще нет на этом пути
-			// std::cout << " word[i]: " << &word[i] << "\n";
 			TreeNode* newNode = new TreeNode;
 			newNode->letter = word[i];
-			if (i == (word.size() - 1)){
+			if (i == (word.size() - 1)){  // если дошли до последней буквы слова - присваиваем этой букве указатель на словоформу
 				newNode->lemma = findLemma(lemWord);
-				// std::cout << "LEMMA: " << lemWord << "\n";
-			} // если дошли до последней буквы слова - присваиваем этой букве указатель на словоформу
-			// std::cout << "LETTER: " << curNode->letter;
-			// std::cout << "LEMMA: " << &curNode->lemma << "\n";
-			// std::cout << ""
+			} 
 			curNode->childLetters.push_back(newNode); 
 			curNode = newNode; // спускаемся на уровень где будет рассматриваться следующая буква слова
 		}
 		else{ // если такая буква уже есть на этом пути
 			curNode = getLetterPtr(word[i], curNode->childLetters);
 		}
-		// std::cout << "LETTER: " << curNode->letter << "\n";
-		// if (curNode->lemma != nullptr)
-		// {
-		// 	std::cout << "LEMMA: " << *curNode->lemma << "\n";
-		// 	std::cout << "ADDR LEMMA: " << curNode->lemma << "\n";
-		// }
-
-
 	}
 }
 
 
-std::string* WordNet::find_lemma_of_word(const std::string& word){ // поиск леммы по слову
+
+// поиск нормальной формы слова в дереве
+std::string* WordNet::find_lemma_of_word(const std::string& word){
 	if (root == nullptr){
 		return nullptr;
 	}

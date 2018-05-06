@@ -4,9 +4,11 @@
 // Filemanager::Filemanager() : data(std::make_shared<Utf16LineList>())
 // {}
 
+
 Filemanager::Filemanager() : data(std::make_shared<std::vector<std::string>>())
 {}
 
+// открытие файла со словарем
 bool Filemanager::read(const std::string& filepath){
 	file.open(filepath);
 
@@ -22,10 +24,12 @@ bool Filemanager::read(const std::string& filepath){
 	return true;
 }
 
+
 Filemanager::Data Filemanager::getdata(){
 	return data;
 }
 
+// прочтение строк словаря в переменную data
 bool Filemanager::readData(){
 	std::string line;
 
@@ -34,6 +38,8 @@ bool Filemanager::readData(){
 	}
 	return true;
 }
+
+
 
 
 // bool Filemanager::readData()

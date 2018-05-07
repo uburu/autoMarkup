@@ -10,7 +10,7 @@ double Markup::MarkupSentences(const vectorized_sent_t &firstSent,
     return CosCounter().ApplyTo(firstSentVec, secondSentVec);
 }
 
-int Markup::MarkupTexts(const vectorized_text_t &firstText,
+double Markup::MarkupTexts(const vectorized_text_t &firstText,
                         const vectorized_text_t &secondText,
                         size_t firstWindowSize, size_t secondWindowSize) {
     double textCos = 0.0;

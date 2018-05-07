@@ -22,10 +22,10 @@ class Markup {
          * @param secondSent
          * Второе предложение в векторизованном виде.
          * @return
-         * Косинусное расстояние между векторами предложений.
+         * Коэффициент близости двух векторов: 0 <= k <= 1.
          */
         virtual double MarkupSentences(const vectorized_sent_t &firstSent,
-                            const vectorized_sent_t &secondSent);
+                                       const vectorized_sent_t &secondSent);
 
         /**
          * Определяет смысловую близость двух векторизованных текстов.
@@ -38,13 +38,11 @@ class Markup {
          * @param secondWindowSize
          * Размер "окна" во втором тексте.
          * @return
-         * -1, если тексты противоположны по смыслу;
-         *  1, если тексты близки по смыслу;
-         *  0, если тексты не противоположны и не близки по смыслу.
+         * Коэффициент близости двух текстов: 0 <= k <= 1.
          */
-        virtual int MarkupTexts(const vectorized_text_t &firstText,
-                        const vectorized_text_t &secondText,
-                        size_t firstWindowSize, size_t secondWindowSize);
+        virtual double MarkupTexts(const vectorized_text_t &firstText,
+                                   const vectorized_text_t &secondText,
+                                   size_t firstWindowSize, size_t secondWindowSize);
 };
 
 #endif /* Markup_hpp */

@@ -15,6 +15,8 @@ set(PROJECT_FILES
         autoMarkup/Markup/Types.hpp
         autoMarkup/Markup/Markup.hpp
         autoMarkup/Markup/Markup.cpp
+        autoMarkup/Markup/SequentialMarkup.hpp
+        autoMarkup/Markup/SequentialMarkup.cpp
         autoMarkup/Markup/CosCounter.hpp
         autoMarkup/Markup/CosCounter.cpp)
 

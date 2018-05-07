@@ -25,8 +25,8 @@ namespace markup
          * @return
          * Коэффициент близости двух векторов: 0 <= k <= 1.
          */
-        virtual double MarkupSentences(const vectorized_sent_t &firstSent,
-                                       const vectorized_sent_t &secondSent);
+        virtual double MarkupSentences(const vectorized_sentence_t &firstSent,
+                                       const vectorized_sentence_t &secondSent);
 
         /**
          * Определяет смысловую близость двух векторизованных текстов.

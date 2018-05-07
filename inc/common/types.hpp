@@ -28,11 +28,11 @@ namespace common
             NotImplementedException& operator =(const NotImplementedException &exception) noexcept = default;
             NotImplementedException& operator =(NotImplementedException &&exception) noexcept = default;
 
-        const char *what() const noexcept override {
-            return (std::string("Method \"") + methodName + std::string("\" not implemented yet.")).c_str();
-        }
+            const char *what() const noexcept override {
+                return (std::string("Method \"") + methodName + std::string("\" not implemented yet.")).c_str();
+            }
 
-        protected:
+            protected:
                 std::string methodName;
     };
 }

@@ -6,6 +6,7 @@
 
 double markup::CosVectorizedWordsComparator::ApplyTo(const common::vectorized_word_t &left,
                                                      const common::vectorized_word_t &right) {
+    assert(!left.empty() && !right.empty());
     assert(left.size() == right.size());
 
     double comp = 0.0;

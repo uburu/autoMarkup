@@ -2,11 +2,16 @@
 #define COMMON_TYPES_H
 
 #include <exception>
+#include <vector>
 #include <string>
 #include <utility>
 
 namespace common
 {
+    typedef std::vector<double> vectorized_word_t;
+    typedef std::vector<vectorized_word_t> vectorized_sentence_t;
+    typedef std::vector<vectorized_sentence_t> vectorized_text_t;
+
     class NotImplementedException : public std::exception {
         public:
             NotImplementedException() = delete;

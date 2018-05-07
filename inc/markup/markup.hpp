@@ -1,7 +1,7 @@
 #ifndef MARKUP_MARKUP_HPP
 #define MARKUP_MARKUP_HPP
 
-#include "types.hpp"
+#include <common/types.hpp>
 
 namespace markup
 {
@@ -25,8 +25,8 @@ namespace markup
          * @return
          * Коэффициент близости двух векторов: 0 <= k <= 1.
          */
-        virtual double MarkupSentences(const vectorized_sentence_t &firstSent,
-                                       const vectorized_sentence_t &secondSent);
+        virtual double MarkupSentences(const common::vectorized_sentence_t &firstSent,
+                                       const common::vectorized_sentence_t &secondSent);
 
         /**
          * Определяет смысловую близость двух векторизованных текстов.
@@ -41,8 +41,8 @@ namespace markup
          * @return
          * Коэффициент близости двух текстов: 0 <= k <= 1.
          */
-        virtual double MarkupTexts(const vectorized_text_t &firstText,
-                                   const vectorized_text_t &secondText,
+        virtual double MarkupTexts(const common::vectorized_text_t &firstText,
+                                   const common::vectorized_text_t &secondText,
                                    size_t firstWindowSize, size_t secondWindowSize) = 0;
     };
 }

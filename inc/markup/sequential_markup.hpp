@@ -16,8 +16,8 @@ namespace markup
             SequentialMarkup& operator =(const SequentialMarkup &markup) = default;
             SequentialMarkup& operator =(SequentialMarkup &&markup) noexcept = default;
 
-            double MarkupTexts(const vectorized_text_t &firstText,
-                               const vectorized_text_t &secondText,
+            double MarkupTexts(const common::vectorized_text_t &firstText,
+                               const common::vectorized_text_t &secondText,
                                size_t firstWindowSize, size_t secondWindowSize) override;
     };
 }

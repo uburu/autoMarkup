@@ -2,7 +2,6 @@ project(auto-markup-app)
 
 set(AUTO_MARKUP_APP_INC
         ../inc/common/types.hpp
-        ../inc/markup/types.hpp
         ../inc/markup/markup.hpp
         ../inc/markup/sequential_markup.hpp)
 

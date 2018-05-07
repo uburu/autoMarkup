@@ -2,7 +2,7 @@
 #define TEST_MARKUP_COS_VECTORIZED_WORDS_COMPARATOR_HPP
 
 #include <boost/test/unit_test.hpp>
-#include <markup/cos_vectorized_words_comparator.hpp>
+#include <markup/cos_words_comparator.hpp>
 
 const double EPS = 0.1;
 
@@ -15,7 +15,7 @@ BOOST_AUTO_TEST_SUITE(TestApplyTo)
         common::vectorized_word_t w2(2);
         w2[0] = 0.0; w2[1] = 1.0;
 
-        auto cmp = markup::CosVectorizedWordsComparator();
+        auto cmp = markup::CosWordsComparator();
         BOOST_CHECK_CLOSE(cmp.ApplyTo(w1, w2), 0.0, EPS);
     }
 
@@ -23,7 +23,7 @@ BOOST_AUTO_TEST_SUITE(TestApplyTo)
             common::vectorized_word_t w(2);
             w[0] = 1.0; w[1] = 0.0;
 
-            auto cmp = markup::CosVectorizedWordsComparator();
+            auto cmp = markup::CosWordsComparator();
             BOOST_CHECK_CLOSE(cmp.ApplyTo(w, w), 1.0, EPS);
     }
 
@@ -34,7 +34,7 @@ BOOST_AUTO_TEST_SUITE(TestApplyTo)
             common::vectorized_word_t w2(2);
             w2[0] = 1.0; w2[1] = 1.0;
 
-            auto cmp = markup::CosVectorizedWordsComparator();
+            auto cmp = markup::CosWordsComparator();
             BOOST_CHECK_CLOSE(cmp.ApplyTo(w1, w2), 0.7071, EPS);
     }
 
@@ -45,7 +45,7 @@ BOOST_AUTO_TEST_SUITE(TestApplyTo)
         common::vectorized_word_t w2(2);
         w2[0] = -1.0; w2[1] = 0.0;
 
-        auto cmp = markup::CosVectorizedWordsComparator();
+        auto cmp = markup::CosWordsComparator();
         BOOST_CHECK_CLOSE(cmp.ApplyTo(w1, w2), -1.0, EPS);
     }
 

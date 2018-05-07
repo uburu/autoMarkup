@@ -1,5 +1,5 @@
-#ifndef MARKUP_VECTOR_OPERATIONS_HPP
-#define MARKUP_VECTOR_OPERATIONS_HPP
+#ifndef MARKUP_WORDS_COMPARATOR_HPP
+#define MARKUP_WORDS_COMPARATOR_HPP
 
 #include <common/types.hpp>
 
@@ -7,16 +7,16 @@ namespace markup {
     /**
      * Предоставляет методы для сравнения векторизованных слов.
      */
-    class VectorizedWordsComparator {
+    class WordsComparator {
         public:
-            VectorizedWordsComparator() = default;
-            VectorizedWordsComparator(const VectorizedWordsComparator &comparator) = default;
-            VectorizedWordsComparator(VectorizedWordsComparator &&comparator) noexcept = default;
+            WordsComparator() = default;
+            WordsComparator(const WordsComparator &comparator) = default;
+            WordsComparator(WordsComparator &&comparator) noexcept = default;
 
-            virtual ~VectorizedWordsComparator() noexcept = default;
+            virtual ~WordsComparator() noexcept = default;
 
-            VectorizedWordsComparator& operator =(const VectorizedWordsComparator &comparator) = default;
-            VectorizedWordsComparator& operator =(VectorizedWordsComparator &&comparator) noexcept = default;
+            WordsComparator& operator =(const WordsComparator &comparator) = default;
+            WordsComparator& operator =(WordsComparator &&comparator) noexcept = default;
 
             /**
              * Сравнивает два слова.
@@ -32,4 +32,4 @@ namespace markup {
     };
 }
 
-#endif //MARKUP_VECTOR_OPERATIONS_HPP
+#endif //MARKUP_WORDS_COMPARATOR_HPP

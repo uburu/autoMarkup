@@ -5,6 +5,10 @@
 #include "markup_factory.hpp"
 
 namespace markup {
+    /**
+     * Предоставляет методы для последовательной разметки
+     * векторизованных текстов на смысловую близость.
+     */
     class SequentialMarkup : public Markup {
         public:
             SequentialMarkup() = default;

@@ -7,14 +7,15 @@ set(MARKUP_INC
         ../inc/markup/markup.hpp
         ../inc/markup/markup_factory.hpp
         ../inc/markup/sequential_markup.hpp
-        ../inc/markup/vectorized_words_comparator.hpp
-        ../inc/markup/cos_vectorized_words_comparator.hpp)
+        ../inc/markup/words_comparator.hpp
+        ../inc/markup/cos_words_comparator.hpp
+        ../inc/markup/sentence_convolution.h)
 
 set(MARKUP_SRC
         markup/markup.cpp
         markup/markup_factory.cpp
         markup/sequential_markup.cpp
-        markup/cos_vectorized_words_comparator.cpp)
+        markup/cos_words_comparator.cpp)
 
 set(AUTO_MARKUP_INC
         ${COMMON_INC}

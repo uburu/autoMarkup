@@ -3,4 +3,4 @@
 
 #include "test_markup.hpp"
 #include "test_markup_factory.hpp"
-#include "test_cos_vectorized_words_comparator.hpp"
+#include "test_cos_words_comparator.hpp"

@@ -1,3 +1,6 @@
+#ifndef TEST_MARKUP_COS_VECTORIZED_WORDS_COMPARATOR_HPP
+#define TEST_MARKUP_COS_VECTORIZED_WORDS_COMPARATOR_HPP
+
 #include <boost/test/unit_test.hpp>
 #include <markup/cos_vectorized_words_comparator.hpp>
 
@@ -47,3 +50,5 @@ BOOST_AUTO_TEST_SUITE(TestApplyTo)
     }
 
 BOOST_AUTO_TEST_SUITE_END()
+
+#endif //TEST_MARKUP_COS_VECTORIZED_WORDS_COMPARATOR_HPP

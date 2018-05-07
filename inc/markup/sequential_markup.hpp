@@ -2,6 +2,7 @@
 #define SEQUENTIAL_MARKUP_HPP
 
 #include "markup.hpp"
+#include "markup_factory.hpp"
 
 namespace markup {
     class SequentialMarkup : public Markup {

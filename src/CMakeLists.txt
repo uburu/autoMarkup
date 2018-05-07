@@ -12,6 +12,7 @@ set(MARKUP_INC
 
 set(MARKUP_SRC
         markup/markup.cpp
+        markup/markup_factory.cpp
         markup/sequential_markup.cpp
         markup/cos_vectorized_words_comparator.cpp)
 

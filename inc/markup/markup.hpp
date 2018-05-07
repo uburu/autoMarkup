@@ -1,10 +1,11 @@
-#ifndef Markup_hpp
-#define Markup_hpp
+#ifndef MARKUP_MARKUP_HPP
+#define MARKUP_MARKUP_HPP
 
 #include "types.hpp"
-#include "CosCounter.hpp"
 
-class Markup {
+namespace markup
+{
+    class Markup {
     public:
         Markup() = default;
         Markup(const Markup &markup) = default;
@@ -42,7 +43,8 @@ class Markup {
          */
         virtual double MarkupTexts(const vectorized_text_t &firstText,
                                    const vectorized_text_t &secondText,
-                                   size_t firstWindowSize, size_t secondWindowSize);
-};
+                                   size_t firstWindowSize, size_t secondWindowSize) = 0;
+    };
+}
 
 #endif /* Markup_hpp */

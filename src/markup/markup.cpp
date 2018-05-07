@@ -1,5 +1,5 @@
 #include <cassert>
-#include "Markup.hpp"
+#include "../../inc/markup/markup.hpp"
 
 vectorized_word_t sum_words(const vectorized_sent_t &sent);
 

@@ -1,7 +1,7 @@
 #ifndef Markup_hpp
 #define Markup_hpp
 
-#include "Types.hpp"
+#include "types.hpp"
 #include "CosCounter.hpp"
 
 class Markup {

@@ -1,26 +1,25 @@
 cmake_minimum_required(VERSION 3.6.0)
+project(auto-markup)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY
+    ${PROJECT_BINARY_DIR}/bin
+    CACHE PATH
+    "Single Directory for all")
 
-include_directories(autoMarkup tests)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY
+    ${PROJECT_BINARY_DIR}/bin
+    CACHE PATH
+    "Single Directory for all")
 
-set(PROJECT_FILES
-        autoMarkup/dataStructs.hpp
-        autoMarkup/DataHub/DataHub.hpp
-        autoMarkup/DataHub/DataHub.cpp
-        autoMarkup/Tokenizer/Tokenizer.hpp
-        autoMarkup/Tokenizer/Tokenizer.cpp
-        autoMarkup/DictHandler/DictHandler.hpp
-        autoMarkup/DictHandler/DictHandler.cpp
-        autoMarkup/Markup/Types.hpp
-        autoMarkup/Markup/Markup.hpp
-        autoMarkup/Markup/Markup.cpp
-        autoMarkup/Markup/SequentialMarkup.hpp
-        autoMarkup/Markup/SequentialMarkup.cpp
-        autoMarkup/Markup/CosCounter.hpp
-        autoMarkup/Markup/CosCounter.cpp)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY
+    ${PROJECT_BINARY_DIR}/lib
+    CACHE PATH
+    "Single Directory for all")
 
-set(TEST_FILES)
+enable_testing()
 
-add_executable(automarkup main.cpp ${PROJECT_FILES})
-add_executable(automarkuptests tests.cpp ${PROJECT_FILES})
+find_package(Boost REQUIRED)
+
+include_directories(inc)
+add_subdirectory(src build/src)
+add_subdirectory(test build/test)

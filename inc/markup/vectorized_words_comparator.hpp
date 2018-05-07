@@ -3,8 +3,7 @@
 
 #include <common/types.hpp>
 
-namespace markup
-{
+namespace markup {
     /**
      * Предоставляет методы для сравнения векторизованных слов.
      */

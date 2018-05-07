@@ -3,8 +3,7 @@
 
 #include "markup.hpp"
 
-namespace markup
-{
+namespace markup {
     class SequentialMarkup : public Markup {
         public:
             SequentialMarkup() = default;

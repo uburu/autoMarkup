@@ -3,8 +3,10 @@
 
 #include <common/types.hpp>
 
-namespace markup
-{
+namespace markup {
+    /**
+     * Предоставляет методы для разметки текста на смысловую близость.
+     */
     class Markup {
         public:
             Markup() = default;

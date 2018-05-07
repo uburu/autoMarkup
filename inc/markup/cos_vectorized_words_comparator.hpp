@@ -3,8 +3,7 @@
 
 #include "vectorized_words_comparator.hpp"
 
-namespace markup
-{
+namespace markup {
     /**
      * Предоставляет методы для сравнения векторизованных слов
      * на основании косинусного расстояния между ними.

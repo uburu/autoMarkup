@@ -1,7 +1,9 @@
 project(auto-markup-app)
 
 set(COMMON_INC
-        ../inc/common/types.hpp)
+        ../inc/common/types.hpp
+        ../inc/common/exceptions.hpp
+        ../inc/common/not_implemented_exception.hpp)
 
 set(MARKUP_INC
         ../inc/markup/markup.hpp

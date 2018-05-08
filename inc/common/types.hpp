@@ -1,50 +1,26 @@
 #ifndef COMMON_TYPES_H
 #define COMMON_TYPES_H
 
-#include <exception>
 #include <vector>
 #include <string>
 #include <utility>
+#include "exceptions.hpp"
 
 namespace common {
+    /**
+     * Векторизованное слово.
+     */
     typedef std::vector<double> vectorized_word_t;
-    typedef std::vector<vectorized_word_t> vectorized_sentence_t;
-    typedef std::vector<vectorized_sentence_t> vectorized_text_t;
 
     /**
-     * Исключение для нереализованных методов.
+     * Векторизованное предложение.
      */
-    class NotImplementedException : public std::exception {
-        public:
-            NotImplementedException() = delete;
+    typedef std::vector<vectorized_word_t> vectorized_sentence_t;
 
-            /**
-             * Создает экземпляр класса.
-             * @param methodName
-             * Имя нереализованного метода.
-             */
-            explicit NotImplementedException(std::string methodName) noexcept :
-                    methodName(std::move(methodName)) {
-            }
-
-            NotImplementedException(const NotImplementedException &exception) noexcept = default;
-            NotImplementedException(NotImplementedException &&exception) noexcept = default;
-
-            ~NotImplementedException() noexcept override = default;
-
-            NotImplementedException& operator =(const NotImplementedException &exception) noexcept = default;
-            NotImplementedException& operator =(NotImplementedException &&exception) noexcept = default;
-
-            /**
-             * Возвращает текстовое представление сообщения об ошибке.
-             */
-            const char *what() const noexcept override {
-                return (std::string("Method \"") + methodName + std::string("\" not implemented yet.")).c_str();
-            }
-
-            protected:
-                std::string methodName;
-    };
+    /**
+     * Векторизованный текст.
+     */
+    typedef std::vector<vectorized_sentence_t> vectorized_text_t;
 }
 
 #endif //COMMON_TYPES_H

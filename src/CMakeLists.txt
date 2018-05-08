@@ -30,3 +30,4 @@ set(AUTO_MARKUP_SRC
         ${MARKUP_SRC})
 
 add_library(auto_markup_app STATIC ${AUTO_MARKUP_INC} ${AUTO_MARKUP_SRC})
+target_link_libraries(auto_markup_app ${CMAKE_THREAD_LIBS_INIT})

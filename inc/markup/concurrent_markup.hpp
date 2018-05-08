@@ -1,5 +1,5 @@
-#ifndef MARKUP_SEQUENTIAL_MARKUP_HPP
-#define MARKUP_SEQUENTIAL_MARKUP_HPP
+#ifndef MARKUP_CONCURRENT_MARKUP_HPP
+#define MARKUP_CONCURRENT_MARKUP_HPP
 
 #include "markup.hpp"
 
@@ -10,16 +10,16 @@ namespace markup {
      */
     template <typename C = WordsComparator,
             typename CV = SentenceConvolution>
-    class SequentialMarkup : public Markup<C, CV> {
+    class ConcurrentMarkup : public Markup<C, CV> {
         public:
-            SequentialMarkup() = default;
-            SequentialMarkup(const SequentialMarkup &markup) = default;
-            SequentialMarkup(SequentialMarkup &&markup) noexcept = default;
+            ConcurrentMarkup() = default;
+            ConcurrentMarkup(const ConcurrentMarkup &markup) = default;
+            ConcurrentMarkup(ConcurrentMarkup &&markup) noexcept = default;
 
-            ~SequentialMarkup() noexcept override = default;
+            ~ConcurrentMarkup() noexcept override = default;
 
-            SequentialMarkup& operator =(const SequentialMarkup &markup) = default;
-            SequentialMarkup& operator =(SequentialMarkup &&markup) noexcept = default;
+            ConcurrentMarkup& operator =(const ConcurrentMarkup &markup) = default;
+            ConcurrentMarkup& operator =(ConcurrentMarkup &&markup) noexcept = default;
 
             /**
              * Определяет смысловую близость двух векторизованных текстов.
@@ -40,23 +40,11 @@ namespace markup {
     };
 
     template<typename C, typename CV>
-    double SequentialMarkup<C, CV>::MarkupTexts(const common::vectorized_text_t &firstText,
+    double ConcurrentMarkup<C, CV>::MarkupTexts(const common::vectorized_text_t &firstText,
                                                 const common::vectorized_text_t &secondText,
                                                 size_t firstWindowSize, size_t secondWindowSize) {
-        double simCoeff = 0.0;
-        for (size_t firstIndex = 0, secondIndex = 0;
-                firstIndex < firstText.size() && secondIndex < secondText.size();
-                firstIndex += firstWindowSize, secondIndex += secondWindowSize) {
-            for (size_t firstCounter = 0; firstCounter < firstWindowSize; ++firstCounter) {
-                for (size_t secondCounter = 0; secondCounter < secondWindowSize; ++secondCounter) {
-                    double curSimCoeff = this->MarkupSentences(firstText[firstIndex + firstCounter],
-                            secondText[secondIndex + secondCounter]);
-                    simCoeff = std::max(simCoeff, curSimCoeff);
-                }
-            }
-        }
-        return simCoeff;
+        return 0;
     }
 }
 
-#endif //MARKUP_SEQUENTIAL_MARKUP_HPP
+#endif //MARKUP_CONCURRENT_MARKUP_HPP

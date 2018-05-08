@@ -4,8 +4,6 @@
 #include <boost/test/unit_test.hpp>
 #include <markup/cos_words_comparator.hpp>
 
-const double EPS = 0.1;
-
 BOOST_AUTO_TEST_SUITE(TestApplyTo)
 
     BOOST_AUTO_TEST_CASE(RightAngle) {

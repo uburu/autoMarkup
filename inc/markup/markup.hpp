@@ -1,7 +1,9 @@
 #ifndef MARKUP_MARKUP_HPP
 #define MARKUP_MARKUP_HPP
 
+#include <cassert>
 #include <common/types.hpp>
+
 #include "words_comparator.hpp"
 #include "sentence_convolution.hpp"
 
@@ -52,7 +54,10 @@ namespace markup {
     template<typename C, typename CV>
     double Markup<C, CV>::MarkupSentences(const common::vectorized_sentence_t &firstSent,
                                           const common::vectorized_sentence_t &secondSent) {
-        return 0;
+        assert(firstSent.size() == secondSent.size());
+        auto firstSentConv = sentenceConvolution.ApplyTo(firstSent);
+        auto secondSentConv = sentenceConvolution.ApplyTo(secondSent);
+        return wordsComparator.ApplyTo(firstSentConv, secondSentConv);
     }
 }
 

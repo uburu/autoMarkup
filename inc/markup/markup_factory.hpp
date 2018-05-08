@@ -1,24 +1,11 @@
 #ifndef MARKUP_MARKUP_FACTORY_HPP
 #define MARKUP_MARKUP_FACTORY_HPP
 
-#include <memory>
-#include <markup/markup.hpp>
+#include "abstract_markup_factory.hpp"
+#include "cos_words_comparator.hpp"
+#include "sentence_sum_convolution.hpp"
 
 namespace markup {
-    /**
-     * Предоставляет методы для создания экземпляра
-     * абстрактного класса Markup.
-     */
-    class AbstractMarkupFactory {
-        public:
-            virtual ~AbstractMarkupFactory() noexcept = default;
-
-            /**
-             * Cоздает экземпляр абстрактного класса Markup.
-             */
-            virtual std::shared_ptr<Markup> Create() = 0;
-    };
-
     /**
      * Способ проведения разметки.
      */
@@ -26,12 +13,16 @@ namespace markup {
         SEQUENTIAL, CONCURRENT
     };
 
+    typedef markup::CosWordsComparator basic_words_comparator_t;
+    typedef markup::SentenceSumConvolution basic_sentence_convolution_t;
+
     /**
      * Предоставляет методы для создания экземпляра
      * абстрактного класса Markup на основании способа
      * проведения разметки.
      */
-    class MarkupFactory : public AbstractMarkupFactory {
+    class MarkupFactory : public AbstractMarkupFactory<basic_words_comparator_t,
+            basic_sentence_convolution_t> {
         public:
             MarkupFactory() = delete;
             explicit MarkupFactory(MarkupType type);
@@ -46,7 +37,8 @@ namespace markup {
             /**
              * Cоздает экземпляр абстрактного класса Markup.
              */
-            std::shared_ptr<Markup> Create() override;
+            std::shared_ptr<Markup<basic_words_comparator_t,
+                    basic_sentence_convolution_t>> Create() override;
 
         protected:
             MarkupType markupType;

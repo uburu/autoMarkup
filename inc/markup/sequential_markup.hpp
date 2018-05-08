@@ -2,14 +2,16 @@
 #define SEQUENTIAL_MARKUP_HPP
 
 #include "markup.hpp"
-#include "markup_factory.hpp"
+#include "abstract_markup_factory.hpp"
 
 namespace markup {
     /**
      * Предоставляет методы для последовательной разметки
      * векторизованных текстов на смысловую близость.
      */
-    class SequentialMarkup : public Markup {
+    template <typename C = WordsComparator,
+            typename CV = SentenceConvolution>
+    class SequentialMarkup : public Markup<C, CV> {
         public:
             SequentialMarkup() = default;
             SequentialMarkup(const SequentialMarkup &markup) = default;
@@ -37,6 +39,13 @@ namespace markup {
                                const common::vectorized_text_t &secondText,
                                size_t firstWindowSize, size_t secondWindowSize) override;
     };
+
+    template<typename C, typename CV>
+    double SequentialMarkup<C, CV>::MarkupTexts(const common::vectorized_text_t &firstText,
+                                                const common::vectorized_text_t &secondText, size_t firstWindowSize,
+                                                size_t secondWindowSize) {
+        throw common::NotImplementedException("markup::SequentialMarkup::MarkupTexts");
+    }
 }
 
 #endif //SEQUENTIAL_MARKUP_HPP

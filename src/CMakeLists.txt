@@ -7,6 +7,7 @@ set(COMMON_INC
 
 set(MARKUP_INC
         ../inc/markup/markup.hpp
+        ../inc/markup/abstract_markup_factory.hpp
         ../inc/markup/markup_factory.hpp
         ../inc/markup/sequential_markup.hpp
         ../inc/markup/words_comparator.hpp
@@ -15,9 +16,7 @@ set(MARKUP_INC
         ../inc/markup/sentence_sum_convolution.hpp)
 
 set(MARKUP_SRC
-        markup/markup.cpp
         markup/markup_factory.cpp
-        markup/sequential_markup.cpp
         markup/cos_words_comparator.cpp
         markup/sentence_sum_convolution.cpp)
 

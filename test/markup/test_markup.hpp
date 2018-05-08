@@ -1,5 +1,5 @@
-#ifndef TEST_MARKUP_HPP
-#define TEST_MARKUP_HPP
+#ifndef TEST_MARKUP_MARKUP_HPP
+#define TEST_MARKUP_MARKUP_HPP
 
 #include <boost/test/unit_test.hpp>
 #include "../fakeit/fakeit.hpp"
@@ -16,4 +16,4 @@ BOOST_AUTO_TEST_SUITE(TestMarkupSentences)
 
 BOOST_AUTO_TEST_SUITE_END()
 
-#endif //TEST_MARKUP_HPP
+#endif //TEST_MARKUP_MARKUP_HPP

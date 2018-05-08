@@ -1,5 +1,5 @@
-#ifndef TEST_MARKUP_FACTORY_HPP
-#define TEST_MARKUP_FACTORY_HPP
+#ifndef TEST_MARKUP_MARKUP_FACTORY_HPP
+#define TEST_MARKUP_MARKUP_FACTORY_HPP
 
 #include <boost/test/unit_test.hpp>
 #include <markup/markup_factory.hpp>
@@ -14,4 +14,4 @@ BOOST_AUTO_TEST_SUITE(TestApplyTo)
 
 BOOST_AUTO_TEST_SUITE_END()
 
-#endif //TEST_MARKUP_FACTORY_HPP
+#endif //TEST_MARKUP_MARKUP_FACTORY_HPP

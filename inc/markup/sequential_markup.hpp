@@ -41,9 +41,21 @@ namespace markup {
 
     template<typename C, typename CV>
     double SequentialMarkup<C, CV>::MarkupTexts(const common::vectorized_text_t &firstText,
-                                                const common::vectorized_text_t &secondText, size_t firstWindowSize,
-                                                size_t secondWindowSize) {
-        throw common::NotImplementedException("markup::SequentialMarkup::MarkupTexts");
+                                                const common::vectorized_text_t &secondText,
+                                                size_t firstWindowSize, size_t secondWindowSize) {
+        double simCoeff = 0.0;
+        for (size_t firstIndex = 0, secondIndex = 0;
+                firstIndex < firstText.size() && secondIndex < secondText.size();
+                firstIndex += firstWindowSize, secondIndex += secondWindowSize) {
+            for (size_t firstCounter = 0; firstCounter < firstWindowSize; ++firstCounter) {
+                for (size_t secondCounter = 0; secondCounter < secondWindowSize; ++secondCounter) {
+                    double curSimCoeff = this->MarkupSentences(firstText[firstIndex + firstCounter],
+                            secondText[secondIndex + secondCounter]);
+                    simCoeff = std::max(simCoeff, curSimCoeff);
+                }
+            }
+        }
+        return simCoeff;
     }
 }
 

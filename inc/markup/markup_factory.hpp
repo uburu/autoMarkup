@@ -6,19 +6,12 @@
 
 namespace markup {
     /**
-     * Предоставляет метод для создания экземпляра
+     * Предоставляет методы для создания экземпляра
      * абстрактного класса Markup.
      */
     class AbstractMarkupFactory {
         public:
-            AbstractMarkupFactory() = default;
-            AbstractMarkupFactory(const AbstractMarkupFactory &factory) = default;
-            AbstractMarkupFactory(AbstractMarkupFactory &&factory) noexcept = default;
-
             virtual ~AbstractMarkupFactory() noexcept = default;
-
-            AbstractMarkupFactory& operator =(const AbstractMarkupFactory &factory) = default;
-            AbstractMarkupFactory& operator =(AbstractMarkupFactory &&factory) noexcept = default;
 
             /**
              * Cоздает экземпляр абстрактного класса Markup.
@@ -34,7 +27,7 @@ namespace markup {
     };
 
     /**
-     * Предоставляет метод для создания экземпляра
+     * Предоставляет методы для создания экземпляра
      * абстрактного класса Markup на основании способа
      * проведения разметки.
      */

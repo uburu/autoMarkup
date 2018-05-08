@@ -9,14 +9,7 @@ namespace markup {
      */
     class Markup {
         public:
-            Markup() = default;
-            Markup(const Markup &markup) = default;
-            Markup(Markup &&markup) noexcept = default;
-
             virtual ~Markup() noexcept = default;
-
-            Markup& operator =(const Markup &markup) = default;
-            Markup& operator =(Markup &&markup) noexcept = default;
 
             /**
              * Определяет смысловую близость двух векторизованных предложений.

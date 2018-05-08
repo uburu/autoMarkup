@@ -9,14 +9,7 @@ namespace markup {
      */
     class WordsComparator {
         public:
-            WordsComparator() = default;
-            WordsComparator(const WordsComparator &comparator) = default;
-            WordsComparator(WordsComparator &&comparator) noexcept = default;
-
             virtual ~WordsComparator() noexcept = default;
-
-            WordsComparator& operator =(const WordsComparator &comparator) = default;
-            WordsComparator& operator =(WordsComparator &&comparator) noexcept = default;
 
             /**
              * Сравнивает два слова.

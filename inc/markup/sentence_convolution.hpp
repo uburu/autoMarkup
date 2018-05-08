@@ -9,14 +9,7 @@ namespace markup {
      */
     class SentenceConvolution {
         public:
-            SentenceConvolution() = default;
-            SentenceConvolution(const SentenceConvolution &sentenceConvolution) = default;
-            SentenceConvolution(SentenceConvolution &&sentenceConvolution) noexcept = default;
-
             virtual ~SentenceConvolution() noexcept = default;
-
-            SentenceConvolution& operator =(const SentenceConvolution &sentenceConvolution) = default;
-            SentenceConvolution& operator =(SentenceConvolution &&sentenceConvolution) noexcept = default;
 
             /**
              * Выполняет свертку векторизованного предложения в слово.

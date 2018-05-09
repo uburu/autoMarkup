@@ -6,6 +6,12 @@
 
 BOOST_AUTO_TEST_SUITE(TestApplyTo)
 
+    BOOST_AUTO_TEST_CASE(Common) {
+        auto type = markup::MarkupType::COMMON;
+        auto factory = markup::MarkupFactory(type);
+        BOOST_CHECK(factory.Create() != nullptr);
+    }
+
     BOOST_AUTO_TEST_CASE(Sequential) {
         auto type = markup::MarkupType::SEQUENTIAL;
         auto factory = markup::MarkupFactory(type);

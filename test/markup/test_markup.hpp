@@ -26,6 +26,10 @@ BOOST_AUTO_TEST_SUITE(TestMarkupTexts)
         typedef markup::CosWordsComparator C;
         typedef markup::SentenceSumConvolution CV;
 
+        markup::SequentialMarkup<C, CV> seqMarkup;
+        auto seqCoeff = seqMarkup.MarkupTexts(t1, t2, 10, 2);
+        BOOST_CHECK(seqCoeff > -0.01 && seqCoeff < 1.01);
+
         markup::FastMarkup<C, CV> fastMarkup;
         auto fastCoeff = fastMarkup.MarkupTexts(t1, t2, 10, 2);
         BOOST_CHECK(fastCoeff > -0.01 && fastCoeff < 1.01);

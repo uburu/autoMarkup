@@ -1,26 +1,27 @@
-#ifndef MARKUP_CONCURRENT_MARKUP_HPP
-#define MARKUP_CONCURRENT_MARKUP_HPP
+#ifndef MARKUP_FAST_MARKUP_HPP
+#define MARKUP_FAST_MARKUP_HPP
 
 #include <future>
 #include "markup.hpp"
 
 namespace markup {
     /**
-     * Предоставляет методы для последовательной разметки
+     * Предоставляет методы для быстрой разметки
      * векторизованных текстов на смысловую близость.
+     * При этом точность результатов теряется.
      */
     template <typename C = WordsComparator,
             typename CV = SentenceConvolution>
-    class ConcurrentMarkup : public Markup<C, CV> {
+    class FastMarkup : public Markup<C, CV> {
         public:
-            ConcurrentMarkup() = default;
-            ConcurrentMarkup(const ConcurrentMarkup &markup) = default;
-            ConcurrentMarkup(ConcurrentMarkup &&markup) noexcept = default;
+            FastMarkup() = default;
+            FastMarkup(const FastMarkup &markup) = default;
+            FastMarkup(FastMarkup &&markup) noexcept = default;
 
-            ~ConcurrentMarkup() noexcept override = default;
+            ~FastMarkup() noexcept override = default;
 
-            ConcurrentMarkup& operator =(const ConcurrentMarkup &markup) = default;
-            ConcurrentMarkup& operator =(ConcurrentMarkup &&markup) noexcept = default;
+            FastMarkup& operator =(const FastMarkup &markup) = default;
+            FastMarkup& operator =(FastMarkup &&markup) noexcept = default;
 
             /**
              * Определяет смысловую близость двух векторизованных текстов.
@@ -44,7 +45,7 @@ namespace markup {
     };
 
     template<typename C, typename CV>
-    double ConcurrentMarkup<C, CV>::MarkupTexts(const common::vectorized_text_t &firstText,
+    double FastMarkup<C, CV>::MarkupTexts(const common::vectorized_text_t &firstText,
                                                 const common::vectorized_text_t &secondText,
                                                 size_t firstWindowSize, size_t secondWindowSize) {
         assert(!firstText.empty() && !secondText.empty());
@@ -61,22 +62,14 @@ namespace markup {
     }
 
     template<typename C, typename CV>
-    common::vectorized_sentence_t ConcurrentMarkup<C, CV>
+    common::vectorized_sentence_t FastMarkup<C, CV>
             ::FindTextConvolution(const common::vectorized_text_t &text) {
-        std::vector<std::future<common::vectorized_word_t>> fut(text.size());
+        common::vectorized_sentence_t textConv(text.size());
         for (size_t i = 0; i < text.size(); ++i) {
-            fut[i] = std::async(std::launch::async, [&]() {
-                return Markup<C, CV>::sentenceConvolution.ApplyTo(text[i]);
-            });
+            textConv[i] = std::move(this->sentenceConvolution.ApplyTo(text[i]));
         }
-
-        common::vectorized_sentence_t conv(text.size());
-        for (size_t i = 0; i < text.size(); ++i) {
-            conv[i] = std::move(fut[i].get());
-        }
-
-        return conv;
+        return textConv;
     }
 }
 
-#endif //MARKUP_CONCURRENT_MARKUP_HPP
+#endif //MARKUP_FAST_MARKUP_HPP

@@ -8,7 +8,7 @@
 
 #include <markup/markup.hpp>
 #include <markup/sequential_markup.hpp>
-#include <markup/concurrent_markup.hpp>
+#include <markup/fast_markup.hpp>
 
 #include <markup/cos_words_comparator.hpp>
 #include <markup/sentence_sum_convolution.hpp>
@@ -26,9 +26,9 @@ BOOST_AUTO_TEST_SUITE(TestMarkupTexts)
         typedef markup::CosWordsComparator C;
         typedef markup::SentenceSumConvolution CV;
 
-        markup::ConcurrentMarkup<C, CV> concMarkup;
-        auto concCoeff = concMarkup.MarkupTexts(t1, t2, 10, 2);
-        BOOST_CHECK(concCoeff >= 0.0 && concCoeff <= 1.0);
+        markup::FastMarkup<C, CV> fastMarkup;
+        auto fastCoeff = fastMarkup.MarkupTexts(t1, t2, 10, 2);
+        BOOST_CHECK(fastCoeff > -0.01 && fastCoeff < 1.01);
     }
 
 BOOST_AUTO_TEST_SUITE_END()

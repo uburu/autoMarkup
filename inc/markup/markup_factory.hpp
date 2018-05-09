@@ -10,7 +10,7 @@ namespace markup {
      * Способ проведения разметки.
      */
     enum class MarkupType {
-        SEQUENTIAL, CONCURRENT
+        SEQUENTIAL, FAST
     };
 
     typedef markup::CosWordsComparator basic_words_comparator_t;

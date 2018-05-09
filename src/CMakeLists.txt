@@ -10,7 +10,7 @@ set(MARKUP_INC
         ../inc/markup/abstract_markup_factory.hpp
         ../inc/markup/markup_factory.hpp
         ../inc/markup/sequential_markup.hpp
-        ../inc/markup/concurrent_markup.hpp
+        ../inc/markup/fast_markup.hpp
         ../inc/markup/words_comparator.hpp
         ../inc/markup/cos_words_comparator.hpp
         ../inc/markup/sentence_convolution.hpp

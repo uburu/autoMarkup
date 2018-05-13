@@ -4,6 +4,7 @@
 #include <iostream>
 
 
+
 void Tokenizer::sentence_token(){ // разделение на предложения
 	boost::char_separator<char> sep("!?."); // разделители
 	boost::tokenizer<boost::char_separator<char>> tokens(text, sep);
@@ -17,9 +18,7 @@ void Tokenizer::sentence_token(){ // разделение на предложе�
 void Tokenizer::sentence_to_words(){ // разделение предложений на слова
 	std::vector<std::string> sep_sentence;
 	std::vector<std::string> normalized_sent;
-	
-	// std::vector<std::string> none_sep_sent = sentence_token(); // получаем вектор предложений из текста
-	
+		
 	/*
 	если до разбиения предложений на слова текст не был разбит на предложения,
 	то есть переменная sentences класс DataHub пуста, вызвать функцию разбиения текста на предложения
@@ -37,7 +36,6 @@ void Tokenizer::sentence_to_words(){ // разделение предложен�
 			std::cout << *it << "\n";
 		}
 		tokens.push_back(sep_sentence);
-		// std::cout << sep_sentence << "\n";
 	}
 }
 
@@ -63,24 +61,18 @@ void Tokenizer::tokens_to_lemma(){
 	// TrainDataParser* obj = new TrainDataParser;
 	// wordnetObj = obj->wordNet();
 
-	std::string* lemma;
-	std::vector<std::string> lemma_sentences;
+	std::string lemma;
+	std::vector<std::experimental::optional<std::string>> lemma_sentences;
 	for (int i = 0; i < tokens.size(); i++){ // цикл по предложеням в массиве
 		for (int j = 0; j < tokens[i].size(); j++){ // цикл по словам в предложении
-			lemma = ac.wordnetObj->find_lemma_of_word(tokens[i][j]);
-			if (lemma != nullptr){
-				lemma_sentences.push_back(*lemma);
-			}
-			else{
-				lemma_sentences.push_back(tokens[i][j]);
-			}
+			lemma_sentences.push_back(ac.wordnetObj->find_lemma_of_word(tokens[i][j]).value_or(tokens[i][j]));
 		}
 		lemma_tokens.push_back(lemma_sentences);
 		lemma_sentences.clear();
 	}
 	for (int i = 0; i < lemma_tokens.size(); i++){
 		for(int j = 0; j < lemma_tokens[i].size(); j++){
-			std::cout << lemma_tokens[i][j] << " ";
+			std::cout << lemma_tokens[i][j].value() << " ";
 		}
 		std::cout << "\n";
 	}

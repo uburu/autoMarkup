@@ -1,7 +1,6 @@
 #ifndef MARKUP_FAST_MARKUP_HPP
 #define MARKUP_FAST_MARKUP_HPP
 
-#include <future>
 #include "markup.hpp"
 
 namespace markup {

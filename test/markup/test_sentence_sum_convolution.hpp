@@ -4,7 +4,7 @@
 #include <boost/test/unit_test.hpp>
 #include <markup/sentence_sum_convolution.hpp>
 
-BOOST_AUTO_TEST_SUITE(TestApplyTo)
+BOOST_AUTO_TEST_SUITE(TestSentenceSumConvolutionApplyTo)
 
     BOOST_AUTO_TEST_CASE(Correct) {
         common::vectorized_word_t w1(2);

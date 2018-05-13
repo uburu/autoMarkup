@@ -4,7 +4,7 @@
 #include <boost/test/unit_test.hpp>
 #include <markup/markup_factory.hpp>
 
-BOOST_AUTO_TEST_SUITE(TestApplyTo)
+BOOST_AUTO_TEST_SUITE(TestMarkupFactoryCreate)
 
     BOOST_AUTO_TEST_CASE(Common) {
         auto type = markup::MarkupType::COMMON;

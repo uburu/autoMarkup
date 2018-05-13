@@ -4,7 +4,7 @@
 #include <boost/test/unit_test.hpp>
 #include <markup/cos_words_comparator.hpp>
 
-BOOST_AUTO_TEST_SUITE(TestApplyTo)
+BOOST_AUTO_TEST_SUITE(TestCosWordsComparatorApplyTo)
 
     BOOST_AUTO_TEST_CASE(RightAngle) {
         common::vectorized_word_t w1(2);

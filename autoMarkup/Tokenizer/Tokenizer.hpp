@@ -19,9 +19,9 @@ public:
 	Tokenizer() {}; // конструктор
 	~Tokenizer() {}; // деструктор
 
-	void sentence_token(); // разделение на предлажения
-	void sentence_to_words(); // разделение предложений на слова
-	void tokens_to_lemma(); // приведение слов к нормальной форме
+	void parseToSentenses(); // разделение на предлажения
+	void parseSentencesToWords(); // разделение предложений на слова
+	void tokensToLemma(); // приведение слов к нормальной форме
 private:
 	std::shared_ptr<WordNet> wordnetObj;
 	std::vector<std::string> normalize(std::vector<std::string>& array);	

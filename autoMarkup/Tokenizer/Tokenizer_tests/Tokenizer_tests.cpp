@@ -15,11 +15,11 @@ int main()
 	std::cout << "-------------READ TEST------------------------\n\n";
 	t.ReadText(fin);
 	std::cout << "\n\n-------------SEPARATION ON SENTECES TEST------------------------\n\n";
-	t.sentence_token();
+	t.parseToSentenses();
 	std::cout << "\n\n-------------SEPARATION SENTECES ON WORDS TEST------------------------\n\n";
-	t.sentence_to_words();
+	t.parseSentencesToWords();
 	std::cout << "\n\n-------------LEMMAS------------------------\n\n";
-	t.tokens_to_lemma();
+	t.tokensToLemma();
 	// std::cout << t.text << "\n";
 	return 0;
 }

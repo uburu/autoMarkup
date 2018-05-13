@@ -7,6 +7,8 @@
 #include <vector>
 #include <string>
 
+#define NODENAME '0'
+
 class WordNet
 {
 public:
@@ -18,7 +20,7 @@ private:
 
 
 	struct TreeNode {
-		char letter = '0'; // имя узла - буква из слова
+		char letter = NODENAME; // имя узла - буква из слова
 		/*
 		lemma - указатель на нормальную словоформу из lemmas. Присваивается когда доходим до последней буквы в слове
 		то есть путь для построения слова записан в дерево и в качестве терминального знака(как в конечных автоматах)

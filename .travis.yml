@@ -17,9 +17,11 @@ addons:
       - george-edison55-precise-backports
     packages:
       - g++-7
-      - cmake-data
       - cmake
-      - libboost-dev
+      - libblkid-dev
+      - e2fslibs-dev
+      - libboost-all-dev
+      - libaudit-dev
 
 language: cpp
 

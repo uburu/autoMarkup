@@ -12,14 +12,13 @@ bool Traincontroller::run(){
 		return false;
 	}
 
-	TrainDataParser* parser = new TrainDataParser;
+	// TrainDataParser* parser = new TrainDataParser;
+	std::shared_ptr<TrainDataParser> parser(new TrainDataParser);
 	if (!parser->parse(fileData)){ // построение дерева 
-		delete parser;
 		return false;
 	}
 
 	wordnetObj = parser->wordNet(); // получение объекта, хранящего дерево, из класса Traindataparser на уровень класса Traincontroller
-	delete parser;
 	return true;
 }
 
@@ -28,15 +27,13 @@ std::shared_ptr<WordNet> Traincontroller::getcontroller(){ // возвращае
 }
 
 bool Traincontroller::readFile(const std::string& filepath){
-	Filemanager *curfile = new Filemanager;
+	std::shared_ptr<Filemanager> curfile(new Filemanager);
 
 	if (!curfile->read(filepath)){ // чтение словаря
-		delete curfile;
 		return false;
 	}
 
 	// fileData - приватный член, хранящий строки словаря на уровне класса Traindata
 	fileData = curfile->getdata(); // получение строк словаря из класса Filemanager на уровень класса Traincontroller
-	delete curfile;
 	return true;
 }

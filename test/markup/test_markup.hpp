@@ -1,8 +1,8 @@
 #ifndef TEST_MARKUP_MARKUP_HPP
 #define TEST_MARKUP_MARKUP_HPP
 
+#include <fakeit.hpp>
 #include <boost/test/unit_test.hpp>
-#include "../fakeit/fakeit.hpp"
 
 #include <random>
 

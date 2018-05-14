@@ -1,6 +1,6 @@
 #include "Tokenizer.hpp"
-#include "../lemmatization/traincontroller.hpp"
-#include "../lemmatization/traindataparser.hpp"
+#include "traincontroller.hpp"
+#include "traindataparser.hpp"
 #include <iostream>
 
 

@@ -1,9 +1,9 @@
 #ifndef Tokenizer_hpp
 #define Tokenizer_hpp
 
-#include "../DataHub/DataHub.hpp"
-#include "../dataStructs.hpp"
-#include "../lemmatization/traincontroller.hpp"
+#include "DataHub.hpp"
+#include "dataStructs.hpp"
+#include "traincontroller.hpp"
 #include <iostream>
 #include <memory>
 #include <vector>

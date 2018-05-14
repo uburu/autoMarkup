@@ -1,5 +1,5 @@
-#include "../Tokenizer.hpp"
-#include "../../lemmatization/traincontroller.hpp"
+#include "Tokenizer.hpp"
+#include "traincontroller.hpp"
 #include <iostream>
 #include <fstream>
 

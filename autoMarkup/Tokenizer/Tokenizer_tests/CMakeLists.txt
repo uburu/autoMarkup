@@ -3,25 +3,33 @@ project(tokenize_test)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(SOURCE_FILES
-        ../../dataStructs.hpp
-        ../../dataStructs.cpp
-        ../../DataHub/DataHub.hpp
-        ../../DataHub/DataHub.cpp
-        ../Tokenizer.hpp
-        ../Tokenizer.cpp
-        ../../lemmatization/wordnet.hpp
-        ../../lemmatization/wordnet.cpp
-        ../../lemmatization/filemanager.hpp
-        ../../lemmatization/filemanager.cpp
-        ../../lemmatization/traindataparser.hpp
-        ../../lemmatization/traindataparser.cpp
-        ../../lemmatization/traincontroller.hpp
-        ../../lemmatization/traincontroller.cpp
-        ../../lemmatization/utf8/checked.hpp
-        ../../lemmatization/utf8/unchecked.hpp
-        ../../lemmatization/utf8/core.hpp
-        ../../lemmatization/utf8.hpp
+include_directories(
+        ../../lemmatization/include
+        ../include
+        ../../DataHub/include
+        ../../include
+        )
+
+
+set(HEADERS
+        ../../include/dataStructs.hpp
+        ../../DataHub/include/DataHub.hpp
+        ../include/Tokenizer.hpp
+        ../../lemmatization/include/wordnet.hpp
+        ../../lemmatization/include/filemanager.hpp
+        ../../lemmatization/include/traindataparser.hpp
+        ../../lemmatization/include/traincontroller.hpp
+        )
+
+set(SOURCES
+        ../../src/dataStructs.cpp
+        ../../DataHub/src/DataHub.cpp
+        ../src/Tokenizer.cpp
+        ../../lemmatization/src/wordnet.cpp
+        ../../lemmatization/src/filemanager.cpp
+        ../../lemmatization/src/traindataparser.cpp
+        ../../lemmatization/src/traincontroller.cpp
         Tokenizer_tests.cpp
         )
-add_executable(tokenize_test ${SOURCE_FILES})
+
+add_executable(tokenize_test ${SOURCES} ${HEADERS})

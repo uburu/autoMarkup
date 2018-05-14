@@ -6,7 +6,7 @@
 #include <string>
 #include <fstream>
 #include <experimental/optional>
-#include "../dataStructs.hpp"
+#include "dataStructs.hpp"
 
 
 class DataHub

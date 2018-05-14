@@ -14,7 +14,8 @@ public:
 	std::shared_ptr<WordNet> getcontroller();
 	std::shared_ptr<WordNet> wordnetObj; // объект, хранящий в себе дерево 
 private:
-	bool readFile(const std::string& filapath); // чтение строк словаря в переменную fileData
+	std::string filePath;
+	bool readFile(); // чтение строк словаря в переменную fileData
 	Filemanager::Data fileData; // хранит в себе строки словаря
 };
 

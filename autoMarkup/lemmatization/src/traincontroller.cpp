@@ -3,12 +3,12 @@
 #include "traincontroller.hpp"
 #include "traindataparser.hpp"
 
-Traincontroller::Traincontroller()
-{}
+Traincontroller::Traincontroller(){
+	filePath = "../../lemmatization/Lemmadict.txt";
+}
 
 bool Traincontroller::run(){
-	if (!readFile("../../lemmatization/Lemmadict.txt")){ // файл нужно указывать относительно места откуда вызывается метод run
-		std::cout << "WRONG PATH" << "\n";
+	if (!readFile()){ // файл нужно указывать относительно места откуда вызывается метод run
 		return false;
 	}
 
@@ -26,10 +26,10 @@ std::shared_ptr<WordNet> Traincontroller::getcontroller(){ // возвращае
 	return wordnetObj;
 }
 
-bool Traincontroller::readFile(const std::string& filepath){
+bool Traincontroller::readFile(){
 	std::shared_ptr<Filemanager> curfile(new Filemanager);
 
-	if (!curfile->read(filepath)){ // чтение словаря
+	if (!curfile->read(filePath)){ // чтение словаря
 		return false;
 	}
 

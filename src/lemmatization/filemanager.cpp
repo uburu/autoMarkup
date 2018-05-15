@@ -1,9 +1,4 @@
 #include "filemanager.hpp"
-// #include "utf8.hpp"
-
-// Filemanager::Filemanager() : data(std::make_shared<Utf16LineList>())
-// {}
-
 
 Filemanager::Filemanager() : data(std::make_shared<std::vector<std::string>>())
 {}

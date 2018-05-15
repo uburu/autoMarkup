@@ -9,7 +9,6 @@ void Tokenizer::parseToSentenses(){ // разделение на предлож�
 	boost::tokenizer<boost::char_separator<char>> tokens(text, sep);
 	for (auto it : tokens){
 		sentences.push_back(it);
-		std::cout << it << "\n";
 	}
 }
 
@@ -28,11 +27,10 @@ void Tokenizer::parseSentencesToWords(){ // разделение предлож�
 	normalized_sent = normalize(sentences); // получаем вектор нормализированных предложений (создаем нормализированную копию sentenes)
 
 	boost::char_separator<char> sep(" ");
-	for (int i = 0; i < normalized_sent.size(); ++i){ // идем по векторы нормализованных предложений
-		boost::tokenizer<boost::char_separator<char>> words(normalized_sent[i], sep);
+	for (auto sentence : normalized_sent){ // идем по векторы нормализованных предложений
+		boost::tokenizer<boost::char_separator<char>> words(sentence, sep);
 		for (auto it : words){
 			sep_sentence.push_back(it);
-			std::cout << it << "\n";
 		}
 		tokens.push_back(sep_sentence);
 	}
@@ -62,32 +60,28 @@ void Tokenizer::tokensToLemma(){
 
 
 	std::vector<std::experimental::optional<std::string>> lemma_sentences;
-	for (int i = 0; i < tokens.size(); i++){ // цикл по предложеням в массиве
-		for (int j = 0; j < tokens[i].size(); j++){ // цикл по словам в предложении
-			lemma_sentences.push_back(ac.wordnetObj->find_lemma_of_word(tokens[i][j]).value_or(tokens[i][j]));
+	for (auto sentence : tokens){ // цикл по предложеням в массиве
+		for (auto word : sentence){ // цикл по словам в предложении
+			lemma_sentences.push_back(ac.wordnetObj->find_lemma_of_word(word).value_or(word));
 		}
 		lemma_tokens.push_back(lemma_sentences);
 		lemma_sentences.clear();
-	}
-	for (int i = 0; i < lemma_tokens.size(); i++){
-		for(int j = 0; j < lemma_tokens[i].size(); j++){
-			std::cout << lemma_tokens[i][j].value() << " ";
-		}
-		std::cout << "\n";
 	}
 }
 /*
 Нормализация - очищение предложений от знаков
 */
-std::vector<std::string> Tokenizer::normalize(std::vector<std::string>& array){ 
+
+
+std::vector<std::string> Tokenizer::normalize(std::vector<std::string>& array_of_sentences){ 
 	std::string signes ("()-<>/[]{}|*");
-	for (int i = 0; i < array.size(); ++i){
-		for (int j = 0; j < array[i].size(); ++j){
-			if (signes.find(array[i][j]) != std::string::npos){
-				array[i].erase(array[i].begin()+j);
+	for (auto sentence: array_of_sentences){
+		for (int j = 0; j < sentence.size(); ++j){
+			if (signes.find(sentence[j]) != std::string::npos){
+				sentence.erase(sentence.begin()+j);
 			}
 		}
 	}
-	return array;	
+	return array_of_sentences;	
 }
 

@@ -4,7 +4,7 @@
 #include "traindataparser.hpp"
 
 Traincontroller::Traincontroller(){
-	filePath = "../../lemmatization/Lemmadict.txt";
+	filePath = "../../data/Lemmadict.txt";
 }
 
 bool Traincontroller::run(){
@@ -12,7 +12,6 @@ bool Traincontroller::run(){
 		return false;
 	}
 
-	// TrainDataParser* parser = new TrainDataParser;
 	std::shared_ptr<TrainDataParser> parser(new TrainDataParser);
 	if (!parser->parse(fileData)){ // построение дерева 
 		return false;

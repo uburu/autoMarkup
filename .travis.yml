@@ -7,9 +7,11 @@ branches:
     - master
     - develop
 
-os: linux
 dist: trusty
-sudo: false
+sudo: required
+os:
+    - linux
+
 addons:
   apt:
     sources:
@@ -26,5 +28,9 @@ addons:
 language: cpp
 
 script:
-  - CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7 cmake .
+  - mkdir build
+  - cd build
+  - CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7 cmake ..
+  - cmake --build .
+  - ctest --output-on-failure
   - cmake --build .

@@ -7,24 +7,29 @@ branches:
     - master
     - develop
 
-os: linux
-dist: trusty
-sudo: false
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-      - george-edison55-precise-backports
-    packages:
-      - g++-7
-      - cmake
-      - libblkid-dev
-      - e2fslibs-dev
-      - libboost-all-dev
-      - libaudit-dev
-
 language: cpp
 
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+          - george-edison55-precise-backports
+        packages:
+          - g++-7
+          - cmake
+          - libblkid-dev
+          - e2fslibs-dev
+          - libboost-all-dev
+          - libaudit-dev
+      env:
+        - CXX=/usr/bin/g++-7
+    - os: osx
+      compiler: clang
+
 script:
-  - CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7 cmake .
+  - cmake .
   - cmake --build .

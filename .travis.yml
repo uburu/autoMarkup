@@ -25,18 +25,16 @@ matrix:
           - e2fslibs-dev
           - libboost-all-dev
           - libaudit-dev
-      env:
-        - CXX=/usr/bin/g++-7
+        script:
+          - mkdir debug
+          - cd debug
+          - CXX=/usr/bin/g++-7 cmake -DCMAKE_BUILD_TYPE=Debug ..
+          - cmake --build .
+          - ctest
+          - cd ..
+          - mkdir release
+          - cd release
+          - cmake -DCMAKE_BUILD_TYPE=Release ..
     - os: osx
       compiler: clang
 
-script:
-  - mkdir debug
-  - cd debug
-  - cmake -DCMAKE_BUILD_TYPE=Debug ..
-  - cmake --build .
-  - ctest
-  - cd ..
-  - mkdir release
-  - cd release
-  - cmake -DCMAKE_BUILD_TYPE=Release ..

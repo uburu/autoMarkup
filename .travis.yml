@@ -7,8 +7,6 @@ branches:
     - master
     - develop
 
-language: cpp
-
 matrix:
   include:
     - os: linux
@@ -25,16 +23,19 @@ matrix:
           - e2fslibs-dev
           - libboost-all-dev
           - libaudit-dev
-        script:
-          - mkdir debug
-          - cd debug
-          - CXX=/usr/bin/g++-7 cmake -DCMAKE_BUILD_TYPE=Debug ..
-          - cmake --build .
-          - ctest
-          - cd ..
-          - mkdir release
-          - cd release
-          - cmake -DCMAKE_BUILD_TYPE=Release ..
+      env: CXX=/usr/bin/g++-7
     - os: osx
+      language: cpp
       compiler: clang
+
+script:
+  - mkdir debug
+  - cd debug
+  - cmake -DCMAKE_BUILD_TYPE=Debug ..
+  - cmake --build .
+  - ctest
+  - cd ..
+  - mkdir release
+  - cd release
+  - cmake -DCMAKE_BUILD_TYPE=Release ..
 

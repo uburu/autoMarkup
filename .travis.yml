@@ -31,5 +31,12 @@ matrix:
       compiler: clang
 
 script:
-  - cmake .
+  - mkdir debug
+  - cd debug
+  - cmake -DCMAKE_BUILD_TYPE=Debug ..
   - cmake --build .
+  - ctest
+  - cd ..
+  - mkdir release
+  - cd release
+  - cmake -DCMAKE_BUILD_TYPE=Release ..

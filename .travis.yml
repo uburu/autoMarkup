@@ -28,9 +28,13 @@ addons:
 language: cpp
 
 script:
-  - mkdir build
-  - cd build
-  - CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7 cmake ..
+  - mkdir debug
+  - cd debug
+  - CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7 cmake -DCMAKE_BUILD_TYPE=Debug ..
   - cmake --build .
   - ctest --output-on-failure
+  - cd ..
+  - mkdir release
+  - cd release
+  - CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7 cmake -DCMAKE_BUILD_TYPE=Release ..
   - cmake --build .

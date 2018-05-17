@@ -11,7 +11,6 @@ void Tokenizer::parseToSentenses(){ // разделение на предлож�
 	for (auto it : tokens){
 		containerSentence.push_back(it);
 	}
-	containerSentence[0];
 	BuildSentences(containerSentence); 
 }
 
@@ -35,27 +34,28 @@ void Tokenizer::parseSentencesToWords(){ // разделение предлож�
 			sep_sentence.push_back(it);
 		}
 		containerTokens.push_back(sep_sentence);
+		sep_sentence.clear();
 	}
 	BuildTokens(containerTokens);
 }
 
 
-void Tokenizer::tokensToLemma(){
-	std::vector<std::vector<std::experimental::optional<std::string>>> containerLemmaTokens;
+// void Tokenizer::tokensToLemma(){
+// 	std::vector<std::vector<std::experimental::optional<std::string>>> containerLemmaTokens;
 
-	Traincontroller ac;
-	ac.run();
+// 	Traincontroller ac;
+// 	ac.run();
 
-	std::vector<std::experimental::optional<std::string>> lemma_sentences;
-	for (auto sentence : hub->tokens){ // цикл по предложеням в массиве
-		for (auto word : sentence){ // цикл по словам в предложении
-			lemma_sentences.push_back(ac.wordnetObj->find_lemma_of_word(word).value_or(word));
-		}
-		containerLemmaTokens.push_back(lemma_sentences);
-		lemma_sentences.clear();
-	}
-	BuildLemmaTokens(containerLemmaTokens);
-}
+// 	std::vector<std::experimental::optional<std::string>> lemma_sentences;
+// 	for (auto sentence : hub->tokens){ // цикл по предложеням в массиве
+// 		for (auto word : sentence){ // цикл по словам в предложении
+// 			lemma_sentences.push_back(ac.wordnetObj->find_lemma_of_word(word).value_or(word));
+// 		}
+// 		containerLemmaTokens.push_back(lemma_sentences);
+// 		lemma_sentences.clear();
+// 	}
+// 	BuildLemmaTokens(containerLemmaTokens);
+// }
 /*
 Нормализация - очищение предложений от знаков
 */
@@ -73,8 +73,18 @@ std::vector<std::string> Tokenizer::normalize(std::vector<std::string>& array_of
 	return array_of_sentences;	
 }
 
+
+void Tokenizer::readFile(std::ifstream& input){
+	std::string containerText;
+	std::string line;
+	while (getline(input, line)){
+		containerText = containerText + line;
+	}
+	BuildText(containerText);
+}
+
 void Tokenizer::fillHub(){
 	parseToSentenses();
 	parseSentencesToWords();
-	tokensToLemma();
+	// tokensToLemma();
 }

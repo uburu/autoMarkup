@@ -2,7 +2,6 @@
 
 void DataHub::SetText(const std::string& tx){
     text = tx;
-
 }
 
 void DataHub::SetSentences(const std::vector<std::string>& s) {
@@ -32,11 +31,11 @@ void DataHub::ShowContent() {
         }
         std::cout << "\n\n";
     }
-    // std::cout << "\n\n-------------LEMMAS------------------------\n\n";
-    // for (auto sentence : lemma_tokens){
-    //     for (auto word : sentence){
-    //         std::cout << word << " ";
-    //     }
-    //     std::cout << "\n\n";
-    // }
+    std::cout << "\n\n-------------LEMMAS------------------------\n\n";
+    for (auto sentence : lemma_tokens){
+        for (auto word : sentence){
+            std::cout << word.value() << " ";
+        }
+        std::cout << "\n\n";
+    }
 }

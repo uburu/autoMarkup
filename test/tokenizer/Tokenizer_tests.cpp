@@ -1,6 +1,7 @@
 #include "DataHub.hpp"
 #include "DataHubBuilder.hpp"
 #include "Tokenizer.hpp"
+#include "lemmatization.hpp"
 #include "traincontroller.hpp"
 #include "controller.hpp"
 #include <iostream>
@@ -9,14 +10,20 @@
 
 int main()
 {
-
 	std::ifstream fin("test_text.txt");
+
 	Controller controller;
-	Tokenizer t;
-	controller.SetOperation(&t);
+	std::shared_ptr<DataHub> hubObj = controller.AllocateHub();
+
+	Tokenizer t; // токенизация текста
+	controller.SetOperation(&t, hubObj);
 	controller.ConstructHub(fin);
-	std::shared_ptr<DataHub> fullHub = controller.GetHub();
-	fullHub->ShowContent();
+
+	Lemmatizator l; // приведение слов к нормальной форме
+	controller.SetOperation(&l, hubObj);
+	controller.ConstructHub();
+
+	hubObj->ShowContent();
 
 	return 0;
 }

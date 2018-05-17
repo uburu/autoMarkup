@@ -24,13 +24,17 @@ public:
 
     void ShowContent();
     /*
-    text, senteces, tokens формируются в ходе работы класса Tokenizer
+    Структуры Tokenizer 
     */
 
     std::string text; /// текст для токенизации
     std::vector<std::string> sentences; /// массив предложений из текста
     std::vector<token_t> tokens; /// массив слов (токенов)
     std::vector<std::vector<std::experimental::optional<std::string>>> lemma_tokens; // лемманизированный массив слов
+
+    /*
+    Структуры Dicthandler (Никита)
+    */
 };
 
 #endif /* DataHub_hpp */

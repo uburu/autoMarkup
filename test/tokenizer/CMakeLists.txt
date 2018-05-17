@@ -21,6 +21,7 @@ set(HEADERS
         ../../inc/lemmatization/filemanager.hpp
         ../../inc/lemmatization/traindataparser.hpp
         ../../inc/lemmatization/traincontroller.hpp
+        ../../inc/lemmatization/lemmatization.hpp
         )
 
 set(SOURCES
@@ -33,6 +34,7 @@ set(SOURCES
         ../../src/lemmatization/filemanager.cpp
         ../../src/lemmatization/traindataparser.cpp
         ../../src/lemmatization/traincontroller.cpp
+        ../../src/lemmatization/lemmatization.cpp
         Tokenizer_tests.cpp
         )
 

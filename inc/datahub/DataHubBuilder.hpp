@@ -17,8 +17,8 @@ public:
 	std::shared_ptr<DataHub> hub;
 	std::shared_ptr<DataHub> GetHub();
 	void createNewModule();
-	void readFile(std::ifstream& input);
-
+	
+	virtual void readFile(std::ifstream& input){};
 	virtual void fillHub(){};
 };
 

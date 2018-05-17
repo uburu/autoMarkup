@@ -1,5 +1,8 @@
+#include "DataHub.hpp"
+#include "DataHubBuilder.hpp"
 #include "Tokenizer.hpp"
 #include "traincontroller.hpp"
+#include "controller.hpp"
 #include <iostream>
 #include <fstream>
 
@@ -7,19 +10,13 @@
 int main()
 {
 
-	// Traincontroller ac;
-	// ac.run();
-
-	Tokenizer t;
 	std::ifstream fin("test_text.txt");
-	std::cout << "-------------READ TEST------------------------\n\n";
-	t.ReadText(fin);
-	std::cout << "\n\n-------------SEPARATION ON SENTECES TEST------------------------\n\n";
-	t.parseToSentenses();
-	std::cout << "\n\n-------------SEPARATION SENTECES ON WORDS TEST------------------------\n\n";
-	t.parseSentencesToWords();
-	std::cout << "\n\n-------------LEMMAS------------------------\n\n";
-	t.tokensToLemma();
-	// std::cout << t.text << "\n";
+	Controller controller;
+	Tokenizer t;
+	controller.SetOperation(&t);
+	controller.ConstructHub(fin);
+	std::shared_ptr<DataHub> fullHub = controller.GetHub();
+	fullHub->ShowContent();
+
 	return 0;
 }

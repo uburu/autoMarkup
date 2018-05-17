@@ -8,10 +8,13 @@ include_directories(
         ../../inc/datastructs
         ../../inc/lemmatization
         ../../inc/tokenizer
+        ../../inc/controller
         )
 
 set(HEADERS
         ../../inc/datahub/DataHub.hpp
+        ../../inc/datahub/DataHubBuilder.hpp
+        ../../inc/controller/controller.hpp
         ../../inc/datastructs/dataStructs.hpp
         ../../inc/tokenizer/Tokenizer.hpp
         ../../inc/lemmatization/wordnet.hpp
@@ -22,6 +25,8 @@ set(HEADERS
 
 set(SOURCES
         ../../src/datahub/DataHub.cpp
+        ../../src/datahub/DataHubBuilder.cpp
+        ../../src/controller/controller.cpp
         ../../src/datastructs/dataStructs.cpp
         ../../src/tokenizer/Tokenizer.cpp
         ../../src/lemmatization/wordnet.cpp

@@ -1,7 +1,10 @@
 #ifndef Tokenizer_hpp
 #define Tokenizer_hpp
 
-#include "DataHub.hpp"
+
+
+// #include "DataHub.hpp"
+#include "DataHubBuilder.hpp"
 #include "dataStructs.hpp"
 #include "traincontroller.hpp"
 #include <iostream>
@@ -12,17 +15,21 @@
 #include <experimental/optional>
 
 
-class Tokenizer : public DataHub
+class Tokenizer : public DataHubBuilder
 {
-
 public:
-	Tokenizer() {}; // конструктор
-	~Tokenizer() {}; // деструктор
+
+	void fillHub(); // заполнение DataHub, такой метод должен быть у любого класса заполняющего DataHub
 
 	void parseToSentenses(); // разделение на предлажения
 	void parseSentencesToWords(); // разделение предложений на слова
 	void tokensToLemma(); // приведение слов к нормальной форме
+
 private:
+    void BuildSentences(const std::vector<std::string>& s) { hub->SetSentences(s); }
+    void BuildTokens(const std::vector<token_t>& t) { hub->SetTokens(t); } 
+    void BuildLemmaTokens(const std::vector<std::vector<std::experimental::optional<std::string>>>& lt) { hub->SetLemmaTokens(lt); }
+	
 	std::shared_ptr<WordNet> wordnetObj;
 	std::vector<std::string> normalize(std::vector<std::string>& array);	
 };

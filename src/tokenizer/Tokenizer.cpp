@@ -5,15 +5,19 @@
 
 
 void Tokenizer::parseToSentenses(){ // разделение на предложения
+	std::vector<std::string> containerSentence;
 	boost::char_separator<char> sep("!?."); // разделители
-	boost::tokenizer<boost::char_separator<char>> tokens(text, sep);
+	boost::tokenizer<boost::char_separator<char>> tokens(hub->text, sep);
 	for (auto it : tokens){
-		sentences.push_back(it);
+		containerSentence.push_back(it);
 	}
+	containerSentence[0];
+	BuildSentences(containerSentence); 
 }
 
 
 void Tokenizer::parseSentencesToWords(){ // разделение предложений на слова
+	std::vector<token_t> containerTokens;
 	std::vector<std::string> sep_sentence;
 	std::vector<std::string> normalized_sent;
 		
@@ -21,10 +25,8 @@ void Tokenizer::parseSentencesToWords(){ // разделение предлож�
 	если до разбиения предложений на слова текст не был разбит на предложения,
 	то есть переменная sentences класс DataHub пуста, вызвать функцию разбиения текста на предложения
 	*/
-	if (sentences.size() == 0) 
-		parseToSentenses();
-	
-	normalized_sent = normalize(sentences); // получаем вектор нормализированных предложений (создаем нормализированную копию sentenes)
+
+	normalized_sent = normalize(hub->sentences); // получаем вектор нормализированных предложений (создаем нормализированную копию sentenes)
 
 	boost::char_separator<char> sep(" ");
 	for (auto sentence : normalized_sent){ // идем по векторы нормализованных предложений
@@ -32,41 +34,27 @@ void Tokenizer::parseSentencesToWords(){ // разделение предлож�
 		for (auto it : words){
 			sep_sentence.push_back(it);
 		}
-		tokens.push_back(sep_sentence);
+		containerTokens.push_back(sep_sentence);
 	}
+	BuildTokens(containerTokens);
 }
 
 
 void Tokenizer::tokensToLemma(){
-/*
-3 способа создать дерево
-*/
-
-	// 1 - запустить метод run внутри метода tokens_to_lemma (работает)
+	std::vector<std::vector<std::experimental::optional<std::string>>> containerLemmaTokens;
 
 	Traincontroller ac;
 	ac.run();
 
-	// 2 - запустить метод run() в Tokenizer_test.cpp и взять дерево из класса Traincontroller (будет segmentation fault)
-	
-	// Traincontroller* obj = new Traincontroller; 
-	// wordnetObj = obj->getcontroller();
-
-	// 3 - запустить метод run() в Tokenizer_test.cpp и взять дерево из класса TraindataParser (дерево не заполнится но не будет segmentation fault)
-	// метод find_lemma_of_word всегда возвращает nullptr
-	
-	// TrainDataParser* obj = new TrainDataParser;
-	// wordnetObj = obj->wordNet();
-
-
 	std::vector<std::experimental::optional<std::string>> lemma_sentences;
-	for (auto sentence : tokens){ // цикл по предложеням в массиве
+	for (auto sentence : hub->tokens){ // цикл по предложеням в массиве
 		for (auto word : sentence){ // цикл по словам в предложении
 			lemma_sentences.push_back(ac.wordnetObj->find_lemma_of_word(word).value_or(word));
 		}
-		lemma_tokens.push_back(lemma_sentences);
+		containerLemmaTokens.push_back(lemma_sentences);
 		lemma_sentences.clear();
 	}
+	BuildLemmaTokens(containerLemmaTokens);
 }
 /*
 Нормализация - очищение предложений от знаков
@@ -85,3 +73,8 @@ std::vector<std::string> Tokenizer::normalize(std::vector<std::string>& array_of
 	return array_of_sentences;	
 }
 
+void Tokenizer::fillHub(){
+	parseToSentenses();
+	parseSentencesToWords();
+	tokensToLemma();
+}

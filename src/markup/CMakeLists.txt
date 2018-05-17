@@ -1,4 +1,4 @@
-project(auto-markup-markup)
+project(markup)
 
 set(MARKUP_INC
         ../../inc/markup/markup.hpp
@@ -16,5 +16,5 @@ set(MARKUP_SRC
         cos_words_comparator.cpp
         sentence_sum_convolution.cpp)
 
-add_library(auto_markup_markup STATIC ${MARKUP_INC} ${MARKUP_SRC})
-target_link_libraries(auto_markup_markup ${CMAKE_THREAD_LIBS_INIT})
+add_library(markup STATIC ${MARKUP_INC} ${MARKUP_SRC})
+target_link_libraries(markup ${CMAKE_THREAD_LIBS_INIT})

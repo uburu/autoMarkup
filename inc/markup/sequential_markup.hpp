@@ -2,6 +2,7 @@
 #define MARKUP_SEQUENTIAL_MARKUP_HPP
 
 #include "markup.hpp"
+#include <algorithm>
 
 namespace markup {
     /**

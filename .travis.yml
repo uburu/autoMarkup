@@ -12,69 +12,74 @@ language: cpp
 matrix:
   include:
     - os: linux
-              dist: trusty
-              sudo: required
-              addons:
-                apt:
-                  sources:
-                    - ubuntu-toolchain-r-test
-                    - george-edison55-precise-backports
-                  packages:
-                    - g++-7
-                    - cmake-data
-                    - cmake
-                    - libboost-all-dev
-              env: CC=gcc-7 CXX=g++-7 TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
+      dist: trusty
+      sudo: required
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - george-edison55-precise-backports
+          packages:
+            - g++-7
+            - cmake-data
+            - cmake
+            - libboost-all-dev
+      env: CC=gcc-7 CXX=g++-7 TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
+
     - os: linux
-              dist: trusty
-              sudo: required
-              addons:
-                apt:
-                  sources:
-                    - ubuntu-toolchain-r-test
-                    - george-edison55-precise-backports
-                  packages:
-                    - g++-7
-                    - cmake-data
-                    - cmake
-                    - libboost-all-dev
-              env: CC=gcc-7 CXX=g++-7 TARGET_CPU=x86 BUILD_CONFIGURATION=Release
+      dist: trusty
+      sudo: required
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - george-edison55-precise-backports
+          packages:
+            - g++-7
+            - cmake-data
+            - cmake
+            - libboost-all-dev
+      env: CC=gcc-7 CXX=g++-7 TARGET_CPU=x86 BUILD_CONFIGURATION=Release
+
     - os: linux
-              dist: trusty
-              sudo: required
-              addons:
-                apt:
-                  sources:
-                    - ubuntu-toolchain-r-test
-                    - george-edison55-precise-backports
-                  packages:
-                    - g++-7
-                    - cmake-data
-                    - cmake
-                    - libboost-all-dev
-              env: CC=gcc-7 CXX=g++-7 TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
+      dist: trusty
+      sudo: required
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - george-edison55-precise-backports
+          packages:
+            - g++-7
+            - cmake-data
+            - cmake
+            - libboost-all-dev
+      env: CC=gcc-7 CXX=g++-7 TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
+
     - os: linux
-              dist: trusty
-              sudo: required
-              addons:
-                apt:
-                  sources:
-                    - ubuntu-toolchain-r-test
-                    - george-edison55-precise-backports
-                  packages:
-                    - g++-7
-                    - cmake-data
-                    - cmake
-                    - libboost-all-dev
-              env: CC=gcc-7 CXX=g++-7 TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
+      dist: trusty
+      sudo: required
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - george-edison55-precise-backports
+          packages:
+            - g++-7
+            - cmake-data
+            - cmake
+            - libboost-all-dev
+      env: CC=gcc-7 CXX=g++-7 TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
+
     - os: osx
-              language: cpp
-              compiler: clang
-              env: CC=clang CXX=clang++ TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
+      language: cpp
+      compiler: clang
+      env: CC=clang CXX=clang++ TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
+
     - os: osx
-              language: cpp
-              compiler: clang
-              env: CC=clang CXX=clang++ TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
+      language: cpp
+      compiler: clang
+      env: CC=clang CXX=clang++ TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
 
 script:
   - mkdir build

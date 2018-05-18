@@ -18,6 +18,9 @@ configuration:
   - Debug
   - Release
 
+environment:
+  BOOST_ROOT: C:\Libraries\boost_1_67_0
+
 install:
     - git submodule update --init --recursive
 

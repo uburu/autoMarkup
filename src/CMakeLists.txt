@@ -3,7 +3,7 @@ project(auto-markup-app)
 add_subdirectory(common)
 add_subdirectory(markup)
 
-add_library(auto_markup_lib)
+add_library(auto_markup_lib STATIC)
 target_link_libraries(auto_markup_lib
         auto_markup_markup)
 

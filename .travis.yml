@@ -14,17 +14,12 @@ matrix:
     - os: linux
       dist: trusty
       sudo: required
+      compiler: gcc
     - os: osx
       language: cpp
       compiler: clang
 
 script:
-  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get update -y; fi
-  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get upgrade -y; fi
-  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install build-essential software-properties-common -y; fi
-  - if [ $TRAVIS_OS_NAME = linux ]; then sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y; fi
-  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get update -y; fi
-  - if [ $TRAVIS_OS_NAME = linux ]; sudo apt-get install gcc-8 g++-8 -y; fi
   - mkdir debug
   - cd debug
   - cmake -DCMAKE_BUILD_TYPE=Debug ..
@@ -34,4 +29,3 @@ script:
   - mkdir release
   - cd release
   - cmake -DCMAKE_BUILD_TYPE=Release ..
-

@@ -22,13 +22,13 @@ namespace common {
                 methodName(std::move(methodName)) {
         }
 
-        NotImplementedException(const NotImplementedException &exception) noexcept = default;
-        NotImplementedException(NotImplementedException &&exception) noexcept = default;
+        NotImplementedException(const NotImplementedException &exception) = default;
+        NotImplementedException(NotImplementedException &&exception) = default;
 
         ~NotImplementedException() noexcept override = default;
 
-        NotImplementedException& operator =(const NotImplementedException &exception) noexcept = default;
-        NotImplementedException& operator =(NotImplementedException &&exception) noexcept = default;
+        NotImplementedException& operator =(const NotImplementedException &exception) = default;
+        NotImplementedException& operator =(NotImplementedException &&exception) = default;
 
         /**
          * Возвращает текстовое представление сообщения об ошибке.

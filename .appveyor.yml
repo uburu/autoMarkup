@@ -1,8 +1,9 @@
 notifications:
   - provider: Email
-    on_build_success: false
-    on_build_failure: false
-    on_build_status_changed: true
+    settings:
+      on_build_success: false
+      on_build_failure: false
+      on_build_status_changed: true
 
 branches:
   only:
@@ -27,4 +28,4 @@ build_script:
   - cd build
   - cmake -G "Visual Studio 15 2017" ..
   - cmake --build .
-  - ctest -C %CONFIGURATION% --output-on-failure
+  - if "%CONFIGURATION%" == "Debug" (ctest -C %CONFIGURATION% --output-on-failure)

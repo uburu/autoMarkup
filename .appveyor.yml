@@ -11,34 +11,21 @@ branches:
 
 image: Visual Studio 2017
 
-init:
-    - git config --global core.autocrlf input
-
-clone_folder: c:\projects\automarkup
-shallow_clone: true
-
-matrix:
-    fast_finish: false
-
 platform:
-    - x64
-    - x86
+  - x64
 
 configuration:
-    - Debug
-    - Release
+  - Debug
+  - Release
 
 install:
-    - call ci\appveyor\set-env.bat %TOOLCHAIN% %PLATFORM%
-    - appveyor DownloadFile <url> -FileName <local-file>
-    - 7z e -y <local-file> -o<local-dir>
-    - ...
+    - git submodule update --init --recursive
 
-build_script:
-    - mkdir build
-    - cd build
-    - cmake .. %CMAKE_CONFIGURE_FLAGS%
-    - cmake --build . %CMAKE_BUILD_FLAGS%
+before_build:
+    - cmake -G "Visual Studio 15 2017 Win64" .
+
+build:
+  project: $(APPVEYOR_BUILD_FOLDER)\$(APPVEYOR_PROJECT_NAME).sln
 
 test_script:
-    - ctest -C %CONFIGURATION% --output-on-failure
+  - '%APPVEYOR_BUILD_FOLDER%\%CONFIGURATION%\tests.exe'

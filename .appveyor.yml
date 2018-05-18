@@ -1,6 +1,6 @@
 notifications:
   - provider: Email
-    settings:
+    settings: ...
       on_build_success: false
       on_build_failure: false
       on_build_status_changed: true

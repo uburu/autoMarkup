@@ -9,7 +9,7 @@ branches:
     - master
     - develop
 
-image: Visual Studio 2015
+image: Visual Studio 2017
 
 init:
     - git config --global core.autocrlf input
@@ -27,12 +27,6 @@ platform:
 configuration:
     - Debug
     - Release
-
-environment:
-    matrix:
-        - TOOLCHAIN: msvc10
-        - TOOLCHAIN: msvc12
-        - TOOLCHAIN: msvc14
 
 install:
     - call ci\appveyor\set-env.bat %TOOLCHAIN% %PLATFORM%

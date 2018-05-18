@@ -26,20 +26,23 @@ matrix:
             - libboost-all-dev
       env:
         - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+        - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
+        - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
+        - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
+        - TARGET_CPU=x86 BUILD_CONFIGURATION=Release
     - os: osx
       language: cpp
       compiler: clang
+      env:
+        - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
+        - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
 
 before_install:
   - eval "${MATRIX_EVAL}"
 
 script:
-  - mkdir debug
-  - cd debug
-  - cmake -DCMAKE_BUILD_TYPE=Debug ..
+  - mkdir build
+  - cd build
+  - cmake ..
   - cmake --build .
   - ctest
-  - cd ..
-  - mkdir release
-  - cd release
-  - cmake -DCMAKE_BUILD_TYPE=Release ..

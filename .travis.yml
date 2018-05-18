@@ -12,30 +12,73 @@ language: cpp
 matrix:
   include:
     - os: linux
-      dist: trusty
-      sudo: required
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-            - george-edison55-precise-backports
-          packages:
-            - g++-7
-            - cmake-data
-            - cmake
-            - libboost-all-dev
-      env:
-        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+              dist: trusty
+              sudo: required
+              addons:
+                apt:
+                  sources:
+                    - ubuntu-toolchain-r-test
+                    - george-edison55-precise-backports
+                  packages:
+                    - g++-7
+                    - cmake-data
+                    - cmake
+                    - libboost-all-dev
+              env: CC=gcc-7 CXX=g++-7 TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
+    - os: linux
+              dist: trusty
+              sudo: required
+              addons:
+                apt:
+                  sources:
+                    - ubuntu-toolchain-r-test
+                    - george-edison55-precise-backports
+                  packages:
+                    - g++-7
+                    - cmake-data
+                    - cmake
+                    - libboost-all-dev
+              env: CC=gcc-7 CXX=g++-7 TARGET_CPU=x86 BUILD_CONFIGURATION=Release
+    - os: linux
+              dist: trusty
+              sudo: required
+              addons:
+                apt:
+                  sources:
+                    - ubuntu-toolchain-r-test
+                    - george-edison55-precise-backports
+                  packages:
+                    - g++-7
+                    - cmake-data
+                    - cmake
+                    - libboost-all-dev
+              env: CC=gcc-7 CXX=g++-7 TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
+    - os: linux
+              dist: trusty
+              sudo: required
+              addons:
+                apt:
+                  sources:
+                    - ubuntu-toolchain-r-test
+                    - george-edison55-precise-backports
+                  packages:
+                    - g++-7
+                    - cmake-data
+                    - cmake
+                    - libboost-all-dev
+              env: CC=gcc-7 CXX=g++-7 TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
     - os: osx
-      language: cpp
-      compiler: clang
-
-before_install:
-  - eval "${MATRIX_EVAL}"
+              language: cpp
+              compiler: clang
+              env: CC=clang CXX=clang++ TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
+    - os: osx
+              language: cpp
+              compiler: clang
+              env: CC=clang CXX=clang++ TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
 
 script:
   - mkdir build
   - cd build
-  - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU
+  - CC=$CC CXX=$CXX cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU
   - cmake --build .
   - ctest

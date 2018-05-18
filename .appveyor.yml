@@ -1,0 +1,32 @@
+notifications:
+  - provider: Email
+    to:
+      - '{{commitAuthorEmail}}'
+    on_build_success: false
+    on_build_failure: false
+    on_build_status_changed: true
+
+branches:
+  only:
+    - master
+    - develop
+
+image: Visual Studio 2017
+
+platform:
+  - x86
+  - x64
+
+configuration:
+  - Debug
+  - Release
+
+environment:
+  BOOST_ROOT: C:\Libraries\boost_1_67_0
+
+build_script:
+  - md build
+  - cd build
+  - cmake -G "Visual Studio 15 2017" ..
+  - cmake --build .
+  - if "%CONFIGURATION%" == "Debug" (ctest -C %CONFIGURATION% --output-on-failure)

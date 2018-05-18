@@ -2,6 +2,7 @@
 #define MARKUP_FAST_MARKUP_HPP
 
 #include "markup.hpp"
+#include <algorithm>
 
 namespace markup {
     /**

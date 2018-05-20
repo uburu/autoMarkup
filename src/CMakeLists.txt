@@ -1,33 +1,39 @@
 project(auto-markup-app)
 
+set(CMAKE_CXX_STANDART 17)
+
+include_directories(
+        ../inc/dict_handler
+        ../inc/common
+        ../inc/datahub
+        ../inc/datastructs
+        ../inc/controller
+        ../inc/markup
+        )
+
 set(COMMON_INC
         ../inc/common/types.hpp
         ../inc/common/exceptions.hpp
         ../inc/common/not_implemented_exception.hpp)
 
-set(MARKUP_INC
-        ../inc/markup/markup.hpp
-        ../inc/markup/abstract_markup_factory.hpp
-        ../inc/markup/markup_factory.hpp
-        ../inc/markup/sequential_markup.hpp
-        ../inc/markup/fast_markup.hpp
-        ../inc/markup/words_comparator.hpp
-        ../inc/markup/cos_words_comparator.hpp
-        ../inc/markup/sentence_convolution.hpp
-        ../inc/markup/sentence_sum_convolution.hpp)
 
-set(MARKUP_SRC
-        markup/markup_factory.cpp
-        markup/cos_words_comparator.cpp
-        markup/sentence_sum_convolution.cpp)
+set(HEADERS
+        ../inc/datahub/DataHub.hpp
+        ../inc/datahub/DataHubBuilder.hpp
+        ../inc/controller/controller.hpp
+        ../inc/datastructs/dataStructs.hpp
+        ../inc/dict_handler/model.hpp
+        ../inc/dict_handler/dict_handler.hpp
+        )
 
-set(AUTO_MARKUP_INC
-        ${COMMON_INC}
-        ${MARKUP_INC})
-
-set(AUTO_MARKUP_SRC
+set(SOURCES
+        ../src/datahub/DataHub.cpp
+        ../src/datahub/DataHubBuilder.cpp
+        ../src/controller/controller.cpp
+        ../src/datastructs/dataStructs.cpp
+        
+        dict_handler/dict_handler.cpp
         main.cpp
-        ${MARKUP_SRC})
+        )
 
-add_library(auto_markup_app STATIC ${AUTO_MARKUP_INC} ${AUTO_MARKUP_SRC})
-target_link_libraries(auto_markup_app ${CMAKE_THREAD_LIBS_INIT})
+add_executable(main ${SOURCES} ${HEADERS})

@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <string>
 #include <experimental/optional>
+#include <boost/bind.hpp>
 
 #define NODENAME '0'
 
@@ -30,6 +31,7 @@ private:
 		*/
 		std::experimental::optional<std::string> lemma;
 		std::vector<TreeNode*> childLetters; // вектор указателей на следующие узлы(буквы которые могут идти после текущей буквы)
+		char getNodename() const { return letter; }
 	};
 
 	/*

@@ -15,32 +15,16 @@ std::experimental::optional<std::string> WordNet::findLemma(const std::string& l
 	return lemWord;
 }
 
-
-/*
-не очень понимаю каким образом тут использовать find. Например в функции findLemma 
-производится поиск в по vector с элементами типа string, и в функцию find мы можем передать
-переменную типа стринг и искать именно ее, но в в функции findLetterPtr я ищу объект структуры TreeNode,
-у которого поле letter будет равно key, то есть я не могу в find передать объект структуры TreeNode
-*/
-
 // проверка наличия узла с нужной буквой в массиве дочерних букв
 bool WordNet::findLetterPtr(const char key, const std::vector<WordNet::TreeNode*>& ptrs){
-	for (int i = 0; i < ptrs.size(); i++){ 
-		if (ptrs[i]->letter == key)
-			return true;
-	}
+	if (find_if(ptrs.begin(), ptrs.end(), boost::bind( &TreeNode::getNodename, _1 ) == key ) != ptrs.end() )
+		return true;
 	return false;
 }
 
 
-// получение указателя на узел с искомой буквой
 WordNet::TreeNode* WordNet::getLetterPtr(const char key, const std::vector<WordNet::TreeNode*>& ptrs){
-	for (int i = 0; i < ptrs.size(); i++){
-		if (ptrs[i]->letter == key){
-			return ptrs[i];
-		}
-	}
-	return nullptr;
+	return *find_if(ptrs.begin(), ptrs.end(), boost::bind( &TreeNode::getNodename, _1 ) == key );
 }
 
 
@@ -80,8 +64,7 @@ std::experimental::optional<std::string> WordNet::find_lemma_of_word(const std::
 				}
 			}
 			else 
-				return {}
-			;
+				return {};
 		}
 	}
 }

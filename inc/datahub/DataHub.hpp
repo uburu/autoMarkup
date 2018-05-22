@@ -23,6 +23,11 @@ public:
     void SetLemmaTokens(const std::vector<std::vector<std::experimental::optional<std::string>>>& lt);
 
     void ShowContent();
+
+    void SetDict(const std::vector<dictelem_t>& d);
+    void SetSentsId(const std::vector<word2id_t>& si);
+    void SetSentsEmbeddings(const std::vector<id2vector_t>& se);
+
     /*
     Структуры Tokenizer 
     */
@@ -35,6 +40,11 @@ public:
     /*
     Структуры Dicthandler (Никита)
     */
+
+    std::vector<dictelem_t> dict; /// словарь w2v
+    std::vector<word2id_t> sents_id; /// id слов в предложениях
+    std::vector<id2vector_t> sents_embeddings; /// векторные представления слов в предложениях
+
 };
 
 #endif /* DataHub_hpp */

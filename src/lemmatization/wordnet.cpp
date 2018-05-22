@@ -6,9 +6,7 @@ WordNet::WordNet()
 
 // возвращает нужную нормальную словоформу, если таковой не было найдено - она записывается в вектор нормальных словоформ
 std::experimental::optional<std::string> WordNet::findLemma(const std::string& lemWord){ 
-	std::vector<std::string>::iterator it;
-
-	it = find(lemmas.begin(), lemmas.end(), lemWord);
+	auto it = find(lemmas.begin(), lemmas.end(), lemWord);
 	if (it != lemmas.end())
 		return *it;
 	lemmas.push_back(lemWord);

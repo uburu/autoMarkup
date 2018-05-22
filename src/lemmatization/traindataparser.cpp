@@ -3,17 +3,11 @@
 #include "traindataparser.hpp"
 #include "wordnet.hpp"
 
-TrainDataParser::TrainDataParser() : wordnetObj(std::make_shared<WordNet>())
-{}
-
-
 /*
-
 заполнение дерева
 fileData - хранит в себе строки словаря
-
 */
-bool TrainDataParser::parse(const Filemanager::Data& fileData){
+bool TrainDataParser::parse(const Filemanager::Data fileData){
 	const char delimeter = ',';
 	for (auto line : *fileData){ 
 		if (line.empty())

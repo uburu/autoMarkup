@@ -9,7 +9,7 @@
 class Traincontroller
 {
 public:
-	Traincontroller(const std::string& path) : filePath(path) {}
+	Traincontroller(const std::string& path) : filePath(path), wordnetObj(std::make_shared<WordNet>()) {}
 	bool run();
 	std::shared_ptr<WordNet> getcontroller();
 	std::shared_ptr<WordNet> wordnetObj; // объект, хранящий в себе дерево 

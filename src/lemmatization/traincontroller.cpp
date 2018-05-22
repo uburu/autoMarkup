@@ -3,9 +3,7 @@
 #include "traincontroller.hpp"
 #include "traindataparser.hpp"
 
-Traincontroller::Traincontroller(){
-	filePath = "../../data/Lemmadict.txt";
-}
+Traincontroller::Traincontroller(const std::string& path) : filePath(path) {}
 
 bool Traincontroller::run(){
 	if (!readFile()){ // файл нужно указывать относительно места откуда вызывается метод run
@@ -36,3 +34,5 @@ bool Traincontroller::readFile(){
 	fileData = curfile->getdata(); // получение строк словаря из класса Filemanager на уровень класса Traincontroller
 	return true;
 }
+
+// mmap 

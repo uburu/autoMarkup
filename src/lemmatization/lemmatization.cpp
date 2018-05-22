@@ -3,7 +3,7 @@
 void Lemmatizator::tokensToLemma(){
 	std::vector<std::vector<std::experimental::optional<std::string>>> containerLemmaTokens;
 
-	Traincontroller ac;
+	Traincontroller ac("../../data/Lemmadict.txt");
 	ac.run();
 
 	std::vector<std::experimental::optional<std::string>> lemma_sentences;

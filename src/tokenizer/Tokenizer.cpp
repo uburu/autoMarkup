@@ -27,7 +27,7 @@ void Tokenizer::parseSentencesToWords(){ // разделение предлож�
 
 	normalized_sent = normalize(hub->sentences); // получаем вектор нормализированных предложений (создаем нормализированную копию sentenes)
 
-	boost::char_separator<char> sep(" ");
+	boost::char_separator<char> sep(" ,<>(){}[]'';:«»|#");
 	for (auto sentence : normalized_sent){ // идем по векторы нормализованных предложений
 		boost::tokenizer<boost::char_separator<char>> words(sentence, sep);
 		for (auto it : words){
@@ -39,30 +39,13 @@ void Tokenizer::parseSentencesToWords(){ // разделение предлож�
 	BuildTokens(containerTokens);
 }
 
-
-// void Tokenizer::tokensToLemma(){
-// 	std::vector<std::vector<std::experimental::optional<std::string>>> containerLemmaTokens;
-
-// 	Traincontroller ac;
-// 	ac.run();
-
-// 	std::vector<std::experimental::optional<std::string>> lemma_sentences;
-// 	for (auto sentence : hub->tokens){ // цикл по предложеням в массиве
-// 		for (auto word : sentence){ // цикл по словам в предложении
-// 			lemma_sentences.push_back(ac.wordnetObj->find_lemma_of_word(word).value_or(word));
-// 		}
-// 		containerLemmaTokens.push_back(lemma_sentences);
-// 		lemma_sentences.clear();
-// 	}
-// 	BuildLemmaTokens(containerLemmaTokens);
-// }
 /*
 Нормализация - очищение предложений от знаков
 */
 
 
 std::vector<std::string> Tokenizer::normalize(std::vector<std::string>& array_of_sentences){ 
-	std::string signes ("()-<>/[]{}|*");
+	std::string signes (",()-<>/[]{}|*");
 	for (auto sentence: array_of_sentences){
 		for (int j = 0; j < sentence.size(); ++j){
 			if (signes.find(sentence[j]) != std::string::npos){
@@ -72,6 +55,8 @@ std::vector<std::string> Tokenizer::normalize(std::vector<std::string>& array_of
 	}
 	return array_of_sentences;	
 }
+
+
 
 
 void Tokenizer::readFile(std::ifstream& input){

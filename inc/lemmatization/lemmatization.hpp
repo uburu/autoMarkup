@@ -14,6 +14,7 @@
 class Lemmatizator : public DataHubBuilder
 {
 public:
+	Lemmatizator(const std::shared_ptr<WordNet>& ptr) : wordnetObj(ptr) {}
 	void fillHub();
 	void tokensToLemma(); // приведение слов к нормальной форме
 

@@ -19,7 +19,13 @@ int main()
 	controller.SetOperation(&t, hubObj);
 	controller.ConstructHub(fin);
 
-	Lemmatizator l; // приведение слов к нормальной форме
+
+
+	Traincontroller ac("../../data/Lemmadict.txt"); // заполняем префиксное дерево
+	ac.run();
+
+	// приведение слов к нормальной форме
+	Lemmatizator l(ac.wordnetObj); // через конструктор передаем объект дерева
 	controller.SetOperation(&l, hubObj);
 	controller.ConstructHub();
 

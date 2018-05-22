@@ -3,9 +3,8 @@
 #include "traincontroller.hpp"
 #include "traindataparser.hpp"
 
-Traincontroller::Traincontroller(const std::string& path) : filePath(path) {}
-
 bool Traincontroller::run(){
+	wordnetObj.reset(new WordNet); //!!!!
 	if (!readFile()){ // файл нужно указывать относительно места откуда вызывается метод run
 		return false;
 	}

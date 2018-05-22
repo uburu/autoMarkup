@@ -1,5 +1,4 @@
-#define BOOST_TEST_MAIN
-#define BOOST_TEST_DYN_LINK
+#define BOOST_TEST_MODULE markup_tests
 
 const double EPS = 0.1;
 

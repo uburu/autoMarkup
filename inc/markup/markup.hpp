@@ -54,7 +54,7 @@ namespace markup {
     template<typename C, typename CV>
     double Markup<C, CV>::MarkupSentences(const common::vectorized_sentence_t &firstSent,
                                           const common::vectorized_sentence_t &secondSent) {
-        assert(firstSent.size() == secondSent.size());
+        //assert(firstSent.size() == secondSent.size());
         auto firstSentConv = sentenceConvolution.ApplyTo(firstSent);
         auto secondSentConv = sentenceConvolution.ApplyTo(secondSent);
         return wordsComparator.ApplyTo(firstSentConv, secondSentConv);

@@ -9,6 +9,7 @@ include_directories(
         ../../inc/lemmatization
         ../../inc/tokenizer
         ../../inc/controller
+        ../../inc/baker
         )
 
 set(HEADERS
@@ -22,6 +23,7 @@ set(HEADERS
         ../../inc/lemmatization/traindataparser.hpp
         ../../inc/lemmatization/traincontroller.hpp
         ../../inc/lemmatization/lemmatization.hpp
+        ../../inc/baker/baker.hpp
         )
 
 set(SOURCES
@@ -35,6 +37,7 @@ set(SOURCES
         ../../src/lemmatization/traindataparser.cpp
         ../../src/lemmatization/traincontroller.cpp
         ../../src/lemmatization/lemmatization.cpp
+        ../../src/baker/baker.cpp
         Tokenizer_tests.cpp
         )
 

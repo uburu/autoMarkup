@@ -61,7 +61,15 @@ std::vector<double> DictHandler::getVector(const size_t req_id)
     bool exist = false;
     exist = idModel.exist(req_id);
     if (!exist)
-        std::cout << "Required id does not exist!" << std::endl; // TODO throw
+    {
+        // std::cout << "Required id does not exist!" << std::endl; // TODO throw
+        std::vector<double> tmp;
+        tmp.resize(hub->dict[1].vec.size());
+        for (size_t i = 0; i < tmp.size(); i ++)
+            tmp[i] = 0;
+        // std::cout << "Required id does not exist! {" << tmp.size() << "}" << std::endl; // TODO throw
+        return tmp;
+    }
     
     elem = idModel.get(req_id);
     return elem.vec;
@@ -76,7 +84,13 @@ std::vector<double> DictHandler::getVector(const std::string key)
     exist = wordModel.exist(key);
     if (!exist)
     {
-        std::cout << "Required id does not exist!  " << key << std::endl; // TODO throw
+        // std::cout << "Required id does not exist!" << std::endl; // TODO throw
+        std::vector<double> tmp;
+        tmp.resize(hub->dict[1].vec.size());
+        for (size_t i = 0; i < tmp.size(); i ++)
+            tmp[i] = 0;
+        // std::cout << "Required id does not exist! {" << tmp.size() << "}" << std::endl; // TODO throw
+        return tmp;
     }
     else
         elem = wordModel.get(key);
@@ -106,7 +120,7 @@ void DictHandler::Word2Vector()
         tmp.sent_id = i;
         for (size_t w = 0; w < tokens_tmp[i].size(); w++) // итерация по словам предложений
         {
-            std::cout<< tokens_tmp[i][w] << " (" << getVector(tokens_tmp[i][w]).size() << ") ";
+            // std::cout<< tokens_tmp[i][w] << " (" << getVector(tokens_tmp[i][w]).size() << ") ";
             tmp.word_embeddings.push_back(getVector(tokens_tmp[i][w]));
         }
         sents_embeddings_.push_back(tmp);

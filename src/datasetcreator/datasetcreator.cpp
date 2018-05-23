@@ -6,28 +6,24 @@
 // 	hub = ptr;
 // }
 
-void DataSetCreator::createDataSet(const std::string& path, std::vector<std::string> sentences, std::vector<id2vector_t> sents_embeddings){
-	std::cout << "???" << "\n";
-	std::ofstream output;
-	std::cout << "1" << "\n";
-	output.open(path);
-	std::cout << "2" << "\n";
-	std::cout << "LLL" <<sentences.size()<< "\n";
-	std::cout << "pppp" << sents_embeddings.size()<< "\n";
+void DataSetCreator::createDataSet(const std::string& path, std::vector<std::string> sentences, std::vector<id2vector_t> sents_embeddings, double threshold){
+	
 	assert(sentences.size() == sents_embeddings.size());
-	// std::cout << "!!!!";
+	std::ofstream output;
+	output.open(path);
 	auto sentSize = sentences.size();
-	std::cout << "3" << "\n";
-	// std::cout << sentences.size()<< "\n";
-	// std::cout << sents_embeddings.size()<< "\n";
 	auto markup_v = markup::MarkupFactory(markup::MarkupType::COMMON).Create();
-	std::cout << "4" << "\n";
-	output << "id;sentence_1;sentence_2;label\n";
-	std::cout << "5" << "\n";
+	double label = 0;
+	double cosin = 0;
+
+
+	output << "id;sentence_1;sentence_2;label;cosin\n";
 	for (int i = 0; i < sentSize - 1; i++){
-		std::cout << "+ " << sents_embeddings[i].word_embeddings.size() << "  " << sents_embeddings[i+1].word_embeddings.size() << "\n" ;
-		auto cosin = markup_v->MarkupSentences(sents_embeddings[i].word_embeddings, sents_embeddings[i+1].word_embeddings);
-		output << i << ";" << sentences[i] << ";" << sentences[i+1] << ";" << cosin << "\n";
+		cosin = markup_v->MarkupSentences(sents_embeddings[i].word_embeddings, sents_embeddings[i+1].word_embeddings);
+		label = 0;
+		if (cosin > threshold)
+			label = 1;
+		output << i << ";" << sentences[i] << ";" << sentences[i+1] << ";" << label << ";" << cosin << "\n";
 	}
 
 	output.close();

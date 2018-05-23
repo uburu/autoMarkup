@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.5)
 project(creator_test)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 
 include_directories(
         ../../inc/datahub
         ../../inc/datastructs
-        ../../inc/lemmatization
+       
         ../../inc/tokenizer
         ../../inc/controller
         ../../inc/baker
@@ -22,11 +22,7 @@ set(HEADERS
         ../../inc/controller/controller.hpp
         ../../inc/datastructs/dataStructs.hpp
         ../../inc/tokenizer/Tokenizer.hpp
-        ../../inc/lemmatization/wordnet.hpp
-        ../../inc/lemmatization/filemanager.hpp
-        ../../inc/lemmatization/traindataparser.hpp
-        ../../inc/lemmatization/traincontroller.hpp
-        ../../inc/lemmatization/lemmatization.hpp
+        
         ../../inc/baker/baker.hpp
         ../../inc/datasetcreator/datasetcreator.hpp
         ../../inc/dict_handler/dict_handler.hpp
@@ -40,11 +36,7 @@ set(SOURCES
         ../../src/controller/controller.cpp
         ../../src/datastructs/dataStructs.cpp
         ../../src/tokenizer/Tokenizer.cpp
-        ../../src/lemmatization/wordnet.cpp
-        ../../src/lemmatization/filemanager.cpp
-        ../../src/lemmatization/traindataparser.cpp
-        ../../src/lemmatization/traincontroller.cpp
-        ../../src/lemmatization/lemmatization.cpp
+        
         ../../src/baker/baker.cpp
         ../../src/datasetcreator/datasetcreator.cpp
         ../../src/dict_handler/dict_handler.cpp

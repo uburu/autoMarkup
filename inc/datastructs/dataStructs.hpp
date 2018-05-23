@@ -31,24 +31,10 @@ struct word2id_t
 struct id2vector_t
 {
     size_t sent_id; /// индекс предложения в словаре
-    std::vector<std::vector<double>> word_embeddings; // вектор векторных представлений слов в предложении
+    std::vector<std::vector<double> > word_embeddings; // вектор векторных представлений слов в предложении
     id2vector_t(){}
-    id2vector_t(const size_t sent_id_val, const std::vector<std::vector<double>> word_embeddings_val) : sent_id(sent_id_val), word_embeddings(word_embeddings_val) {}
+    id2vector_t(const size_t sent_id_val, const std::vector<std::vector<double> > word_embeddings_val) : sent_id(sent_id_val), word_embeddings(word_embeddings_val) {}
 };
 
-
-template<class K, class V>
-struct Bucket {
-    K key;
-    V val;
-    Bucket(const K &k, const V &v) : val(v), key(k) {}
-};
-
-
-template<class T> struct myHash {
-    static size_t hashFunction(const T& s) {
-        return std::hash<T>()(s);
-    }
-};
 
 #endif /* dataStructs_hpp */

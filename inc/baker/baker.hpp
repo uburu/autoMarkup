@@ -7,8 +7,8 @@
 #include "DataHub.hpp"
 #include "DataHubBuilder.hpp"
 #include "Tokenizer.hpp"
-#include "lemmatization.hpp"
-#include "traincontroller.hpp"
+// #include "lemmatization.hpp"
+// #include "traincontroller.hpp"
 #include "controller.hpp"
 #include "datasetcreator.hpp"
 #include "dict_handler.hpp"
@@ -18,7 +18,7 @@ class Baker
 {
 public:
 	Baker(){}
-	virtual void bake(const std::string& input, const std::string& output, const std::string& lemmaDict = "../../data/Lemmadict.txt");
+	virtual void bake(const std::string& input, const std::string& output, double threshold, bool verbose, const std::string& lemmaDict = "../../data/Lemmadict.txt");
 };
 
 

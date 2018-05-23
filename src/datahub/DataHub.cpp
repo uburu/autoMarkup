@@ -13,9 +13,9 @@ void DataHub::SetTokens(const std::vector<token_t>& t) {
 }
 
 
-void DataHub::SetLemmaTokens(const std::vector<std::vector<std::experimental::optional<std::string>>>& lt) {
-    lemma_tokens = lt;
-}
+// void DataHub::SetLemmaTokens(const std::vector<std::vector<std::experimental::optional<std::string>>>& lt) {
+//     lemma_tokens = lt;
+// }
 
 void DataHub::SetDict(const std::vector<dictelem_t>& d)
 {
@@ -49,11 +49,11 @@ void DataHub::ShowContent() {
         }
         std::cout << "\n\n";
     }
-    std::cout << "\n\n-------------LEMMAS------------------------\n\n";
-    for (auto sentence : lemma_tokens){
-        for (auto word : sentence){
-            std::cout << word.value() << " ";
-        }
-        std::cout << "\n\n";
-    }
+    // std::cout << "\n\n-------------LEMMAS------------------------\n\n";
+    // for (auto sentence : lemma_tokens){
+    //     for (auto word : sentence){
+    //         std::cout << word.value() << " ";
+    //     }
+    //     std::cout << "\n\n";
+    // }
 }

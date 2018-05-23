@@ -20,7 +20,7 @@ public:
     void SetText(const std::string& tx);
     void SetSentences(const std::vector<std::string>& s);
     void SetTokens(const std::vector<token_t>& t);
-    void SetLemmaTokens(const std::vector<std::vector<std::experimental::optional<std::string>>>& lt);
+    // void SetLemmaTokens(const std::vector<std::vector<std::experimental::optional<std::string>>>& lt);
 
     void ShowContent();
 
@@ -35,7 +35,7 @@ public:
     std::string text; /// текст для токенизации
     std::vector<std::string> sentences; /// массив предложений из текста
     std::vector<token_t> tokens; /// массив слов (токенов)
-    std::vector<std::vector<std::experimental::optional<std::string>>> lemma_tokens; // лемманизированный массив слов
+    // std::vector<std::vector<std::experimental::optional<std::string>>> lemma_tokens; // лемманизированный массив слов
 
     /*
     Структуры Dicthandler (Никита)

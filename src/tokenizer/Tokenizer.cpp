@@ -45,7 +45,7 @@ void Tokenizer::parseSentencesToWords(){ // разделение предлож�
 
 
 std::vector<std::string> Tokenizer::normalize(std::vector<std::string>& array_of_sentences){ 
-	std::string signes (",()-<>/[]{}|*");
+	std::string signes (",()-<>/[]{}|*;:");
 	for (auto sentence: array_of_sentences){
 		for (int j = 0; j < sentence.size(); ++j){
 			if (signes.find(sentence[j]) != std::string::npos){

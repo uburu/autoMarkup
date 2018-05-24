@@ -18,5 +18,9 @@ double markup::CosWordsComparator::ApplyTo(const common::vectorized_word_t &left
         sqrRight += right[i] * right[i];
     }
 
-    return comp / (sqrt(sqrLeft) * sqrt(sqrRight));
+    // assert( (sqrt(sqrLeft) * sqrt(sqrRight)) != 0 );
+    double denominator = sqrt(sqrLeft) * sqrt(sqrRight);
+    if (denominator == 0) 
+        denominator += 0.001; // add noise
+    return comp / denominator;
 }

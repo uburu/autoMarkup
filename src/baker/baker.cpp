@@ -15,7 +15,7 @@ void Baker::bake(const std::string& input, const std::string& output, double thr
 	controller.SetOperation(&t, hubObj);
 	controller.ConstructHub(fin);
 	auto end = ctime(&timer);
-	if (verbose) std::cout << "Done tokenization (" << (end - start) / CLOCKS_PER_SEC << " sec.)\n";
+	if (verbose) std::cout << "Done tokenization \n";
 	
 	// Traincontroller ac(lemmaDict); // заполняем префиксное дерево
 	// ac.run();
@@ -33,7 +33,9 @@ void Baker::bake(const std::string& input, const std::string& output, double thr
 	controller.ConstructHub(finDict);
 	end = ctime(&timer);
 
-	if (verbose) std::cout << "Done vectorization (" << (end - start) / CLOCKS_PER_SEC << " sec.)\n";
+	if (verbose) std::cout << "Done vectorization \n";
+
+	if (verbose) std::cout << "sents_embeddings size = " << hubObj->sents_embeddings.size() << "\n";
 
 
 	if (verbose) std::cout << "Start creating dataset\n";
@@ -44,5 +46,5 @@ void Baker::bake(const std::string& input, const std::string& output, double thr
 	creator.createDataSet(output, hubObj->sentences, hubObj->sents_embeddings, threshold);
 	end = ctime(&timer);
 
-	if (verbose) std::cout << "Done creating dataset (" << (end - start) / CLOCKS_PER_SEC << " sec.)\n";
+	if (verbose) std::cout << "Done creating dataset \n";
 }

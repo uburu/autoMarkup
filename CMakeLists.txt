@@ -19,7 +19,7 @@
 -	
 -set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY	
 -    ${PROJECT_BINARY_DIR}/lib	
--    CACHE PATH	
+-    CACHE PATH		
 -    "Single Directory for all")	
 -	
 -enable_testing()	

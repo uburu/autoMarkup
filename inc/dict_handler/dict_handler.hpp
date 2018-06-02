@@ -32,11 +32,6 @@ public:
     std::vector<double> getVector(const std::string key);
     
     void Word2Vector();
- //    void Word2Id(class DataHub& datahub); /// Поиск id слов и их замена
- //    void Id2Vector(class DataHub& datahub); /// Поиск веторного представления слов по id
-    
- //    void fitModel(class DataHub& datahub);  
-    // void fit(std::ifstream& file, std::string delimiter, std::string delimiter_vec);
 
     void BuildDict(const std::vector<dictelem_t>& d) { hub->SetDict(d); }
     void BuildSentsId(const std::vector<word2id_t>& si){ hub->SetSentsId(si); } 

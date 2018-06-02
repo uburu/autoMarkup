@@ -1,12 +1,7 @@
 #ifndef DataHubBuilder_hpp
 #define DataHubBuilder_hpp
 
-#include <iostream>
-#include <vector>
-#include <string>
 #include <fstream>
-#include <memory>
-#include <experimental/optional>
 #include "dataStructs.hpp"
 #include "DataHub.hpp"
 

@@ -56,12 +56,9 @@ size_t DictHandler::getId(const std::string key)
 
 std::vector<double> DictHandler::getVector(const size_t req_id)
 {
-	// REDO get vector from index = id - 1, id > 0 . Need to provide liniar indexes
-    dictelem_t elem;
+	dictelem_t elem;
     bool exist = false;
     exist = idModel.exist(req_id);
-    if (!exist)
-        std::cout << "Required id does not exist!" << std::endl; // TODO throw
     
     elem = idModel.get(req_id);
     return elem.vec;
@@ -70,12 +67,9 @@ std::vector<double> DictHandler::getVector(const size_t req_id)
 
 std::vector<double> DictHandler::getVector(const std::string key)
 {
-	// REDO get vector from index = id - 1, id > 0 . Need to provide liniar indexes
-    dictelem_t elem;
+	dictelem_t elem;
     bool exist = false;
     exist = wordModel.exist(key);
-    if (!exist)
-        std::cout << "Required id does not exist!" << std::endl; // TODO throw
     
     elem = wordModel.get(key);
     return elem.vec;
@@ -84,10 +78,10 @@ std::vector<double> DictHandler::getVector(const std::string key)
 
 void DictHandler::fillModels()
 {
-    for (size_t i = 0; i < hub->dict.size(); i++)
+    for (auto elem : hub->dict)
     {
-    	wordModel.add(hub->dict[i].word, hub->dict[i]);
-    	idModel.add(hub->dict[i].id, hub->dict[i]);
+    	wordModel.add(elem.word, elem);
+    	idModel.add(elem.id, elem);
     }
 };
 
@@ -98,13 +92,13 @@ void DictHandler::Word2Vector()
 
     std::vector<id2vector_t> sents_embeddings_;
 
-    for (size_t i = 0; i < tokens_tmp.size(); i++) // итерация по предложениям
+    for (auto sentence : tokens_tmp)
     {
         id2vector_t tmp;
         tmp.sent_id = i;
-        for (size_t w = 0; w < tokens_tmp[i].size(); w++) // итерация по словам предложений
+        for (auto token : sentence)
         {
-            tmp.word_embeddings.push_back(getVector(tokens_tmp[i][w]));
+            tmp.word_embeddings.push_back(getVector(token));
         }
         sents_embeddings_.push_back(tmp);
     }

@@ -6,5 +6,5 @@ std::shared_ptr<DataHub> DataHubBuilder::GetHub() {
 }
 
 void DataHubBuilder::createNewModule(){
-	hub.reset(new DataHub);
+	hub = new DataHub();
 }

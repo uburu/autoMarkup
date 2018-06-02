@@ -21,7 +21,10 @@ void DictHandler::readFile(std::ifstream& input)
         while ((pos = s.find(delimiter)) != std::string::npos) {
             token = s.substr(0, pos);
             if (i == 0)
-                id = atoi(token.c_str());
+            {
+                char *pEnd;
+                long int id = strtol(token, &pEnd);
+            }
             else if (i == 1)
                 word = token;
             
@@ -30,7 +33,9 @@ void DictHandler::readFile(std::ifstream& input)
         }
         while ((pos = s.find(delimiter_vec)) != std::string::npos) {
             token = s.substr(0, pos);
-            vec.push_back(atof(token.c_str()));
+            char *pEnd;
+            float coord = strtof(token, &pEnd);
+            vec.push_back(coord);
             s.erase(0, pos + delimiter_vec.length());
         }
         vec.push_back(atof(s.c_str()));

@@ -7,28 +7,56 @@
 
 #include <iostream>
 
+#include "hashTable.hpp"
 
-/*
-* Класс для хранения словаря
-*/
+
+/// Заместитель для хеш-таблицы
 template<typename Key, typename Value>
-class Model 
+class IModel 
 {
-	std::unordered_map<Key, Value> map;
 public:
-	Model(){};
-	~Model(){};
 
-	Value get(const Key key) { return map.at(key); /* если нет то throw std::out_of_range */ };
-	bool exist(const Key key)
-	{
-		auto search = map.find(key);
-		return search != map.end(); // если не найден, то iterator.end()
-	};
-	void add(const Key key, const Value value) { map.insert(std::make_pair(key, value)); };
+	virtual Value get(const Key key);
+	virtual bool exist(const Key key);
+	virtual void add(const Key key, const Value value);
+	virtual void del(const Key key);
+};
 
-	void del(const Key key) { map.erase(key); };
 
+template<typename Key, typename Value>
+class ModelProxy : public IModel 
+{
+public:
+    ModelProxy()
+    {
+        model = new HashTable<Key, Value>();
+    }
+    virtual ~ModelProxy()
+    {
+        delete model;
+    }
+    virtual Value get(const Key key) 
+    {
+        return model->get(key);
+    }
+    
+    virtual bool exist(const Key key) 
+    {
+        return model->exist(key);
+    }
+    
+    virtual void add(const Key key, const Value value) 
+    {
+        model->add(key, value);
+    }
+    
+    virtual void del(const Key key) 
+    {
+        model->div(key);
+    }
+    
+private:
+	std::shared_ptr<IModel> model;
 };
 
 

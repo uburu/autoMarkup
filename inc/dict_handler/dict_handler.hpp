@@ -15,8 +15,8 @@
 
 class DictHandler: public DataHubBuilder
 {
-	Model <std::string, dictelem_t> wordModel; // хеш таблица, где ключ - слово
-	Model <size_t, dictelem_t> idModel; // хеш таблица, где ключ - id слова
+	std::shared_ptr< IModel <std::string, dictelem_t> > wordModel = new ModelProxy();// хеш таблица, где ключ - слово
+	std::shared_ptr< IModel <size_t, dictelem_t> > idModel = new ModelProxy();// хеш таблица, где ключ - id слова
 public:
 	DictHandler() {};
 	~DictHandler() {};

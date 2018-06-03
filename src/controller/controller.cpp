@@ -16,15 +16,12 @@ std::shared_ptr<DataHub> Controller::GetHub(){
 }
 
 void Controller::ConstructHub(std::ifstream& input){
-	// hubBuilder->createNewModule();
 	hubBuilder->readFile(input);
 	hubBuilder->fillHub();
 }
 
 
 void Controller::ConstructHub(){
-	// hubBuilder->createNewModule();
-	// hubBuilder->readFile(input);
 	hubBuilder->fillHub();
 }
 

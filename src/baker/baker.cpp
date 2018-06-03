@@ -6,7 +6,8 @@ void Baker::bake(const std::string& input, const std::string& lemmaDict){
 	Controller controller;
 	std::shared_ptr<DataHub> hubObj = controller.AllocateHub();
 
-	Tokenizer t; // токенизация текста
+	std::shared_ptr<DefaultTokenizerCore> tokenCore; // объект реализации токенизации (паттерн abstract factory)
+	Tokenizer t(tokenCore); // токенизация текста, передаем объект, хранящий реализацию токенизации
 	controller.SetOperation(&t, hubObj);
 	controller.ConstructHub(fin);
 
@@ -16,7 +17,8 @@ void Baker::bake(const std::string& input, const std::string& lemmaDict){
 	ac.run();
 
 	// приведение слов к нормальной форме
-	Lemmatizator l(ac.wordnetObj); // через конструктор передаем объект дерева
+	std::shared_ptr<DefaultLemmatizatorCore> lemmaCore; // объект реализации лемматизации (паттерн abstract factory)
+	Lemmatizator l(ac.wordnetObj, lemmaCore); // через конструктор передаем объект дерева, и объект, хранящий реализацию лемматизации
 	controller.SetOperation(&l, hubObj);
 	controller.ConstructHub();
 

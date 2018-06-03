@@ -1,7 +1,7 @@
 #include "lemmatization.hpp"
 
 
-void Lemmatizator::tokensToLemma(){
+void DefaultLemmatizatorCore::tokensToLemma(){
 	std::vector<std::vector<std::experimental::optional<std::string>>> containerLemmaTokens;
 
 	std::vector<std::experimental::optional<std::string>> lemma_sentences;
@@ -17,5 +17,5 @@ void Lemmatizator::tokensToLemma(){
 
 
 void Lemmatizator::fillHub(){
-	tokensToLemma();
+	product->tokensToLemma();
 }

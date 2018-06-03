@@ -14,14 +14,36 @@
 class Lemmatizator : public DataHubBuilder
 {
 public:
-	Lemmatizator(const std::shared_ptr<WordNet>& ptr) : wordnetObj(ptr) {}
+	Lemmatizator(const std::shared_ptr<WordNet>& ptr, const std::shared_ptr<LemmaFactory>& f) : wordnetObj(ptr), product(f) {}
 	void fillHub();
-	void tokensToLemma(); // приведение слов к нормальной форме
-
+	
 private:
-	void BuildLemmaTokens(const std::vector<std::vector<std::experimental::optional<std::string>>>& lt) { hub->SetLemmaTokens(lt); }
 	std::shared_ptr<WordNet> wordnetObj;
+	std::shared_ptr<LemmaFactory> product;
 };
+
+
+// интерфейс для различных реализаций лемматизации
+class LemmaFactory : public Lemmatizator
+{
+public:
+	virtual void tokensToLemma();
+
+protected: // могут использоваться в классах-наследниках
+	void BuildLemmaTokens(const std::vector<std::vector<std::experimental::optional<std::string>>>& lt) { hub->SetLemmaTokens(lt); }
+
+};
+
+
+// реализация лемматизатора, передается в конструктор классу Lemmatizator
+class DefaultLemmatizatorCore : public LemmaFactory
+{
+public:
+	DefaultLemmatizatorCore(){}
+	virtual void tokensToLemma();
+};
+
+
 
 
 

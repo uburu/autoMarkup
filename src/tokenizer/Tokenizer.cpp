@@ -4,7 +4,7 @@
 #include <iostream>
 
 
-void Tokenizer::parseToSentenses(){ // разделение на предложения
+void DefaultTokenizerCore::parseToSentenses(){ // разделение на предложения
 	std::vector<std::string> containerSentence;
 	boost::char_separator<char> sep("!?."); // разделители
 	boost::tokenizer<boost::char_separator<char>> tokens(hub->text, sep);
@@ -15,7 +15,7 @@ void Tokenizer::parseToSentenses(){ // разделение на предлож�
 }
 
 
-void Tokenizer::parseSentencesToWords(){ // разделение предложений на слова
+void DefaultTokenizerCore::parseSentencesToWords(){ // разделение предложений на слова
 	std::vector<token_t> containerTokens;
 	std::vector<std::string> sep_sentence;
 	std::vector<std::string> normalized_sent;
@@ -44,7 +44,7 @@ void Tokenizer::parseSentencesToWords(){ // разделение предлож�
 */
 
 
-std::vector<std::string> Tokenizer::normalize(std::vector<std::string>& array_of_sentences){ 
+std::vector<std::string> DefaultTokenizerCore::normalize(std::vector<std::string>& array_of_sentences){ 
 	std::string signes (",()-<>/[]{}|*");
 	for (auto sentence: array_of_sentences){
 		for (int j = 0; j < sentence.size(); ++j){
@@ -69,7 +69,6 @@ void Tokenizer::readFile(std::ifstream& input){
 }
 
 void Tokenizer::fillHub(){
-	parseToSentenses();
-	parseSentencesToWords();
-	// tokensToLemma();
+	product->parseToSentenses();
+	product->parseSentencesToWords();
 }

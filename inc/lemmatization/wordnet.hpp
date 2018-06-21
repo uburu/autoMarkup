@@ -9,7 +9,6 @@
 #include <string>
 #include <experimental/optional>
 
-#define NODENAME '0'
 
 class WordNet
 {
@@ -19,8 +18,7 @@ public:
 	std::experimental::optional<std::string> find_lemma_of_word(const std::string& word); // поиск нормальной формы слова в дереве
 
 private:
-
-
+	const char NODENAME = 0; 
 	struct TreeNode {
 		char letter = NODENAME; // имя узла - буква из слова
 		/*

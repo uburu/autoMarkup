@@ -12,14 +12,17 @@
 
 
 // abstract factory
+class TokensFactory;
 
 class Tokenizer : public DataHubBuilder
 {
 public:
-	Tokenizer(const std::shared_ptr<TokensFactory>& f) { product = f };
+	Tokenizer(){}
+	Tokenizer(const std::shared_ptr<TokensFactory>& f) { product = f; }
 	void readFile(std::ifstream& input);
 	void fillHub(); // заполнение DataHub, такой метод должен быть у любого класса заполняющего DataHub
 private:
+
 	std::shared_ptr<TokensFactory> product;
 
 };
@@ -30,13 +33,15 @@ private:
 class TokensFactory : public Tokenizer
 {
 public:
-	virtual void parseToSentenses(); // разделение на предлажения
-	virtual void parseSentencesToWords(); // разделение предложений на слова
+	TokensFactory(){}
+	virtual void parseToSentenses() = 0; // разделение на предлажения
+	virtual void parseSentencesToWords() = 0; // разделение предложений на слова
+	virtual void BuildText(const std::string& tx) { hub->SetText(tx); }
 
 protected: // могут использоваться в классах-наследниках
-	void BuildText(const std::string& tx) { hub->SetText(tx); }
     void BuildSentences(const std::vector<std::string>& s) { hub->SetSentences(s); }
     void BuildTokens(const std::vector<token_t>& t) { hub->SetTokens(t); }
+
 };
 
 

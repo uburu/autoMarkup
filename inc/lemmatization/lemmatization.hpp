@@ -11,15 +11,21 @@
 #include <boost/tokenizer.hpp>
 #include <experimental/optional>
 
+
+// abstract factory
+class LemmaFactory;
+
 class Lemmatizator : public DataHubBuilder
 {
 public:
+	Lemmatizator(){}
 	Lemmatizator(const std::shared_ptr<WordNet>& ptr, const std::shared_ptr<LemmaFactory>& f) : wordnetObj(ptr), product(f) {}
 	void fillHub();
-	
+
 private:
-	std::shared_ptr<WordNet> wordnetObj;
 	std::shared_ptr<LemmaFactory> product;
+protected:
+	std::shared_ptr<WordNet> wordnetObj;
 };
 
 
@@ -27,7 +33,8 @@ private:
 class LemmaFactory : public Lemmatizator
 {
 public:
-	virtual void tokensToLemma();
+	LemmaFactory(){}
+	virtual void tokensToLemma() = 0;
 
 protected: // могут использоваться в классах-наследниках
 	void BuildLemmaTokens(const std::vector<std::vector<std::experimental::optional<std::string>>>& lt) { hub->SetLemmaTokens(lt); }

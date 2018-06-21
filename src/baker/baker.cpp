@@ -7,20 +7,20 @@ void Baker::bake(const std::string& input, const std::string& lemmaDict){
 	std::shared_ptr<DataHub> hubObj = controller.AllocateHub();
 
 	std::shared_ptr<DefaultTokenizerCore> tokenCore; // объект реализации токенизации (паттерн abstract factory)
-	Tokenizer t(tokenCore); // токенизация текста, передаем объект, хранящий реализацию токенизации
-	controller.SetOperation(&t, hubObj);
+	std::shared_ptr<Tokenizer> t(tokenCore); // токенизация текста, передаем объект, хранящий реализацию токенизации
+	controller.SetOperation(t, hubObj);
 	controller.ConstructHub(fin);
 
 
 
-	Traincontroller ac(lemmaDict); // заполняем префиксное дерево
-	ac.run();
+	// Traincontroller ac(lemmaDict); // заполняем префиксное дерево
+	// ac.run();
+	// std::shared_ptr<WordNet> net = ac.wordnetObj;
+	// // приведение слов к нормальной форме
+	// std::shared_ptr<DefaultLemmatizatorCore> lemmaCore; // объект реализации лемматизации (паттерн abstract factory)
+	// std::shared_ptr<Lemmatizator> l(net, lemmaCore); // через конструктор передаем объект дерева, и объект, хранящий реализацию лемматизации
+	// controller.SetOperation(l, hubObj);
+	// controller.ConstructHub();
 
-	// приведение слов к нормальной форме
-	std::shared_ptr<DefaultLemmatizatorCore> lemmaCore; // объект реализации лемматизации (паттерн abstract factory)
-	Lemmatizator l(ac.wordnetObj, lemmaCore); // через конструктор передаем объект дерева, и объект, хранящий реализацию лемматизации
-	controller.SetOperation(&l, hubObj);
-	controller.ConstructHub();
-
-	hubObj->ShowContent();
+	// hubObj->ShowContent();
 }

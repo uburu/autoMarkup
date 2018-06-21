@@ -7,6 +7,7 @@
 заполнение дерева
 fileData - хранит в себе строки словаря
 */
+
 bool TrainDataParser::parse(const Filemanager::Data fileData){
 	const char delimeter = ',';
 	for (auto line : *fileData){ 

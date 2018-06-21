@@ -5,7 +5,7 @@ std::shared_ptr<DataHub> Controller::AllocateHub(){
 	return tmpHub; 
 }
 
-void Controller::SetOperation(DataHubBuilder* h, std::shared_ptr<DataHub> &emptyHub){
+void Controller::SetOperation(std::shared_ptr<DataHubBuilder> h, std::shared_ptr<DataHub> &emptyHub){
 	hubBuilder = h;
 	hubBuilder->hub = emptyHub;
 }

@@ -30,7 +30,6 @@ set(SOURCES
         ../../src/datahub/DataHub.cpp
         ../../src/datahub/DataHubBuilder.cpp
         ../../src/controller/controller.cpp
-        ../../src/datastructs/dataStructs.cpp
         ../../src/tokenizer/Tokenizer.cpp
         ../../src/lemmatization/wordnet.cpp
         ../../src/lemmatization/filemanager.cpp

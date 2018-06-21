@@ -66,7 +66,7 @@ void Tokenizer::readFile(std::ifstream& input){
 	while (getline(input, line)){
 		containerText = containerText + line;
 	}
-	BuildText(containerText);
+	product->BuildText(containerText);
 }
 
 void Tokenizer::fillHub(){

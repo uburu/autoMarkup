@@ -28,7 +28,7 @@ void DefaultTokenizerCore::parseSentencesToWords(){ // разделение пр
 
 	normalized_sent = normalize(hub->sentences); // получаем вектор нормализированных предложений (создаем нормализированную копию sentenes)
 
-	boost::char_separator<char> sep(" ");
+	boost::char_separator<char> sep(separators);
 	for (auto sentence : normalized_sent){ // идем по векторы нормализованных предложений
 		boost::tokenizer<boost::char_separator<char>> words(sentence, sep);
 		for (auto it : words){
@@ -46,10 +46,10 @@ void DefaultTokenizerCore::parseSentencesToWords(){ // разделение пр
 
 
 std::vector<std::string> DefaultTokenizerCore::normalize(std::vector<std::string>& array_of_sentences){ 
-	std::string signes (",()-<>/[]{}|*");
+	std::string signs(rubbish);
 	for (auto sentence: array_of_sentences){
 		for (int j = 0; j < sentence.size(); ++j){
-			if (signes.find(sentence[j]) != std::string::npos){
+			if (signs.find(sentence[j]) != std::string::npos){
 				sentence.erase(sentence.begin()+j);
 			}
 		}

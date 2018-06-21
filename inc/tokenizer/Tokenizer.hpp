@@ -54,6 +54,8 @@ public:
 	virtual void parseToSentenses(); // разделение на предлажения
 	virtual void parseSentencesToWords(); // разделение предложений на слова 
 private:
+	const char *rubbish = " ,<>(){}[]'';:«»|#";
+	const char *separators = " ";
 	std::vector<std::string> normalize(std::vector<std::string>& array);
 };
 

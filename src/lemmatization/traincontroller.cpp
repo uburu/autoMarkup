@@ -4,7 +4,6 @@
 #include "traindataparser.hpp"
 
 bool Traincontroller::run(){
-	// wordnetObj(std::make_shared<WordNet>()) //!!!!
 	if (!readFile()){ // файл нужно указывать относительно места откуда вызывается метод run
 		return false;
 	}

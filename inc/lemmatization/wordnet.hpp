@@ -8,7 +8,6 @@
 #include <algorithm>
 #include <string>
 #include <experimental/optional>
-#include <boost/bind.hpp>
 
 #define NODENAME '0'
 

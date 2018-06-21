@@ -1,5 +1,5 @@
 #include "wordnet.hpp"
-
+#include <boost/bind.hpp>
 
 WordNet::WordNet()
 {}

@@ -28,7 +28,7 @@ void DefaultTokenizerCore::parseSentencesToWords(){ // разделение пр
 
 	normalized_sent = normalize(hub->sentences); // получаем вектор нормализированных предложений (создаем нормализированную копию sentenes)
 
-	boost::char_separator<char> sep(" ,<>(){}[]'';:«»|#");
+	boost::char_separator<char> sep(" ");
 	for (auto sentence : normalized_sent){ // идем по векторы нормализованных предложений
 		boost::tokenizer<boost::char_separator<char>> words(sentence, sep);
 		for (auto it : words){

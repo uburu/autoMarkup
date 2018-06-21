@@ -14,7 +14,7 @@ bool TrainDataParser::parse(const Filemanager::Data fileData){
 		if (line.empty())
 			continue;
 
-		std::string::iterator delimIt = std::find(line.begin(), line.end(), delimeter);
+		auto delimIt = std::find(line.begin(), line.end(), delimeter);
 		if (delimIt == line.end())
 			continue;
 

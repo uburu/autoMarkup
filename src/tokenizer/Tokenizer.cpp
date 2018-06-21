@@ -2,6 +2,7 @@
 #include "traincontroller.hpp"
 #include "traindataparser.hpp"
 #include <iostream>
+#include <boost/tokenizer.hpp>
 
 
 void DefaultTokenizerCore::parseToSentenses(){ // разделение на предложения

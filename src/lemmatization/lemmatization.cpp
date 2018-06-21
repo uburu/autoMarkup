@@ -1,5 +1,7 @@
 #include "lemmatization.hpp"
-
+void LemmaFactory::BuildLemmaTokens(const std::vector<std::vector<std::experimental::optional<std::string>>>& lt) { 
+	hub->SetLemmaTokens(lt); 
+}
 
 void DefaultLemmatizatorCore::tokensToLemma(){
 	std::vector<std::vector<std::experimental::optional<std::string>>> containerLemmaTokens;

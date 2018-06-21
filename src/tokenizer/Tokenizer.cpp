@@ -4,6 +4,15 @@
 #include <iostream>
 #include <boost/tokenizer.hpp>
 
+void TokensFactory::BuildText(const std::string& tx) { 
+	hub->SetText(tx); 
+}
+void TokensFactory::BuildSentences(const std::vector<std::string>& s) { 
+	hub->SetSentences(s); 
+}
+void TokensFactory::BuildTokens(const std::vector<token_t>& t) { 
+	hub->SetTokens(t); 
+}
 
 void DefaultTokenizerCore::parseToSentenses(){ // разделение на предложения
 	std::vector<std::string> containerSentence;

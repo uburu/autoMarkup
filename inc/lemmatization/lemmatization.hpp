@@ -36,8 +36,7 @@ public:
 	virtual void tokensToLemma() = 0;
 
 protected: // могут использоваться в классах-наследниках
-	void BuildLemmaTokens(const std::vector<std::vector<std::experimental::optional<std::string>>>& lt) { hub->SetLemmaTokens(lt); }
-
+	void BuildLemmaTokens(const std::vector<std::vector<std::experimental::optional<std::string>>>& lt);
 };
 
 

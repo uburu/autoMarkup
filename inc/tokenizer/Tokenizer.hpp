@@ -36,11 +36,11 @@ public:
 	TokensFactory(){}
 	virtual void parseToSentenses() = 0; // разделение на предлажения
 	virtual void parseSentencesToWords() = 0; // разделение предложений на слова
-	virtual void BuildText(const std::string& tx) { hub->SetText(tx); }
 
 protected: // могут использоваться в классах-наследниках
-    void BuildSentences(const std::vector<std::string>& s) { hub->SetSentences(s); }
-    void BuildTokens(const std::vector<token_t>& t) { hub->SetTokens(t); }
+	void BuildText(const std::string& tx);
+    void BuildSentences(const std::vector<std::string>& s);
+    void BuildTokens(const std::vector<token_t>& t);
 
 };
 

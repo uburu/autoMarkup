@@ -13,14 +13,14 @@ void Baker::bake(const std::string& input, const std::string& lemmaDict){
 
 
 
-	// Traincontroller ac(lemmaDict); // заполняем префиксное дерево
-	// ac.run();
-	// std::shared_ptr<WordNet> net = ac.wordnetObj;
-	// // приведение слов к нормальной форме
-	// std::shared_ptr<DefaultLemmatizatorCore> lemmaCore; // объект реализации лемматизации (паттерн abstract factory)
-	// std::shared_ptr<Lemmatizator> l(net, lemmaCore); // через конструктор передаем объект дерева, и объект, хранящий реализацию лемматизации
-	// controller.SetOperation(l, hubObj);
-	// controller.ConstructHub();
+	Traincontroller ac(lemmaDict); // заполняем префиксное дерево
+	ac.run();
+	std::shared_ptr<WordNet> net = ac.wordnetObj;
+	// приведение слов к нормальной форме
+	std::shared_ptr<DefaultLemmatizatorCore> lemmaCore; // объект реализации лемматизации (паттерн abstract factory)
+	std::shared_ptr<Lemmatizator> l(net, lemmaCore); // через конструктор передаем объект дерева, и объект, хранящий реализацию лемматизации
+	controller.SetOperation(l, hubObj);
+	controller.ConstructHub();
 
-	// hubObj->ShowContent();
+	hubObj->ShowContent();
 }

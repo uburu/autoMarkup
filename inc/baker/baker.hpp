@@ -16,7 +16,7 @@ class Baker
 {
 public:
 	Baker(){}
-	virtual void bake(const std::string& input, const std::string& lemmaDict = "../../data/Lemmadict.txt");
+	virtual void bake(const std::string& input, const std::string& lemmaDict);
 };
 
 

@@ -10,8 +10,8 @@ class Filemanager
 {
 public:
 
-	typedef std::shared_ptr<std::vector<std::string>> Data; 
-	Filemanager();
+	typedef std::vector<std::string> Data; 
+	Filemanager(){}
 	bool read(const std::string& filepath);
 	Data getdata();
 private:

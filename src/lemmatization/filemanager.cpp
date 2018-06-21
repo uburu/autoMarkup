@@ -1,8 +1,5 @@
 #include "filemanager.hpp"
 
-Filemanager::Filemanager() : data(std::make_shared<std::vector<std::string>>())
-{}
-
 // открытие файла со словарем
 bool Filemanager::read(const std::string& filepath){
 	file.open(filepath);
@@ -29,7 +26,7 @@ bool Filemanager::readData(){
 	std::string line;
 
 	while (std::getline(file, line)){
-		data->push_back(line);
+		data.push_back(line);
 	}
 	return true;
 }

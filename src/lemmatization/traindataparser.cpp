@@ -10,7 +10,7 @@ fileData - хранит в себе строки словаря
 
 bool TrainDataParser::parse(const Filemanager::Data fileData){
 	const char delimeter = ',';
-	for (auto line : *fileData){ 
+	for (auto line : fileData){ 
 		if (line.empty())
 			continue;
 
